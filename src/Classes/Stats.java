@@ -1,0 +1,78 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Classes;
+
+/**
+ *
+ * @author Rolando
+ */
+public class Stats {
+
+    private int hp;
+    private int strength;
+    private int agility;
+    private int speed;
+    private int magic;
+    private int manaPoints;
+
+    public Stats(int hp, int strength, int agility, int speed, int magic, int manaPoints) {
+        this.hp = hp;
+        this.strength = strength;
+        this.agility = agility;
+        this.speed = speed;
+        this.magic = magic;
+        this.manaPoints = manaPoints;
+    }
+
+    //Getters and Setters
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getMagic() {
+        return magic;
+    }
+
+    public void setMagic(int magic) {
+        this.magic = magic;
+    }
+
+    public int getManaPoints() {
+        return manaPoints;
+    }
+
+    public void setManaPoints(int manaPoints) {
+        this.manaPoints = manaPoints;
+    }
+
+}
