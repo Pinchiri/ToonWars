@@ -24,11 +24,17 @@ public class Character {
         this.starvationCounter = starvationCounter;
     }
 
+    public void increaseStarvationCounter() {
+        if (!isTopPriority() && getStarvationCounter() < 8) {
+            this.starvationCounter++;
+        }
+    }
+
     public boolean isTopPriority() {
         return getPriorityLevel() == 1;
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public int getId() {
         return id;
     }

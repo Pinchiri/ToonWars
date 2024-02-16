@@ -4,6 +4,9 @@
  */
 package Classes;
 
+import static Constants.Constants.DRAW_RATE;
+import static Constants.Constants.NON_COMBAT_RATE;
+import static Constants.Constants.WIN_RATE;
 import DataStructures.LinkedList;
 
 /**
@@ -23,14 +26,14 @@ public class ArtificialIntelligence extends Thread {
     public ArtificialIntelligence(int winRate, int drawRate, int nonCombatRate) {
         this.firstContestant = null;
         this.secondContestant = null;
-        this.winRate = winRate;
-        this.drawRate = drawRate;
-        this.nonCombatRate = nonCombatRate;
+        this.winRate = WIN_RATE;
+        this.drawRate = DRAW_RATE;
+        this.nonCombatRate = NON_COMBAT_RATE;
         this.winners = new LinkedList<>();
         this.battleOcurring = null;
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public Character getFirstContestant() {
         return firstContestant;
     }

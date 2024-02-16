@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Rolando Sorrentino
+ * @author Rolando
  * @param <T>
  */
 public class LinkedList<T> {
@@ -40,7 +40,7 @@ public class LinkedList<T> {
     /**
      *
      * @return Booleano; "true" si la lista está vacía, "false" si posee al
-     * menos un elemento
+     *         menos un elemento
      */
     public boolean isEmpty() {
         return head == null;
@@ -95,7 +95,7 @@ public class LinkedList<T> {
     /**
      * Inserta un elemento en el índice indicado de la Lista
      *
-     * @param index (Índice en el que se quiere agregar)
+     * @param index   (Índice en el que se quiere agregar)
      * @param element (Elemento a agregar)
      * @return Node que se agregó
      */
@@ -108,7 +108,8 @@ public class LinkedList<T> {
         } else {
 
             if (index > getSize()) {
-                JOptionPane.showMessageDialog(null, "The index is out of bounds. The element will be added on the last index.");
+                JOptionPane.showMessageDialog(null,
+                        "The index is out of bounds. The element will be added on the last index.");
                 return addLast(element);
 
             } else {
@@ -192,7 +193,8 @@ public class LinkedList<T> {
         if (!isEmpty()) {
             Node<T> pointer = getHead();
             if (index > getSize()) {
-                JOptionPane.showMessageDialog(null, "The index is out of bounds. Instead, the last element will be deleted.");
+                JOptionPane.showMessageDialog(null,
+                        "The index is out of bounds. Instead, the last element will be deleted.");
                 return deleteLast();
 
             } else {
@@ -356,7 +358,7 @@ public class LinkedList<T> {
         return false;
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public Node getHead() {
         return head;
     }

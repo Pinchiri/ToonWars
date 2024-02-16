@@ -4,25 +4,31 @@
  */
 package Classes;
 
+import static Constants.Constants.CARTOON_NETWORK_INT;
+import static Constants.Constants.CARTOON_NETWORK_STRING;
+import static Constants.Constants.NEW_CHARACTER_CHANCE;
+import static Constants.Constants.NICKELODEON_INT;
+import static Constants.Constants.NICKELODEON_STRING;
+
 /**
  *
  * @author Rolando
  */
-public class Administrator {
+public class Administrator extends Thread {
 
     private AnimationStudio Nickelodeon;
     private AnimationStudio CartoonNetwork;
     private int cyclesCounter;
-    private float newCharacterChance;
+    private int newCharacterChance;
 
     public Administrator() {
-        this.Nickelodeon = new AnimationStudio(0, "Nickelodeon");
-        this.CartoonNetwork = new AnimationStudio(1, "Cartoon Network");
+        this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING);
+        this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING);
         this.cyclesCounter = 0;
-        this.newCharacterChance = 0.8f;
+        this.newCharacterChance = NEW_CHARACTER_CHANCE;
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public AnimationStudio getNickelodeon() {
         return Nickelodeon;
     }
@@ -47,11 +53,11 @@ public class Administrator {
         this.cyclesCounter = cyclesCounter;
     }
 
-    public float getNewCharacterChance() {
+    public int getNewCharacterChance() {
         return newCharacterChance;
     }
 
-    public void setNewCharacterChance(float newCharacterChance) {
+    public void setNewCharacterChance(int newCharacterChance) {
         this.newCharacterChance = newCharacterChance;
     }
 
