@@ -33,6 +33,21 @@ public class MainUI extends javax.swing.JFrame {
         cartoonNetworkPanel_title = new javax.swing.JLabel();
         networkPanel_title = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
+        chracterSPNick1 = new javax.swing.JLabel();
+        chracterAGNick_Label1 = new javax.swing.JLabel();
+        chracterMPNick_Label1 = new javax.swing.JLabel();
+        characterIDNick1 = new javax.swing.JLabel();
+        chracterMPNick1 = new javax.swing.JLabel();
+        characterIDNick_Label1 = new javax.swing.JLabel();
+        chracterSPNick_Label1 = new javax.swing.JLabel();
+        chracterHPNick1 = new javax.swing.JLabel();
+        chracterHPNick_Label1 = new javax.swing.JLabel();
+        chracterMGNick1 = new javax.swing.JLabel();
+        chracterSTNick1 = new javax.swing.JLabel();
+        chracterSTNick_Label1 = new javax.swing.JLabel();
+        characterImgNick1 = new javax.swing.JLabel();
+        chracterAGNick1 = new javax.swing.JLabel();
+        chracterMGNick_Label1 = new javax.swing.JLabel();
         secondQueueCartoon_label = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         secondQueueCartoon = new javax.swing.JTextArea();
@@ -100,6 +115,81 @@ public class MainUI extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chracterSPNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterSPNick1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterSPNick1.setText("0");
+        jPanel2.add(chracterSPNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 54, 23));
+
+        chracterAGNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterAGNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterAGNick_Label1.setText("AG:");
+        jPanel2.add(chracterAGNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 29, -1));
+
+        chracterMPNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterMPNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterMPNick_Label1.setText("MP:");
+        jPanel2.add(chracterMPNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
+
+        characterIDNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        characterIDNick1.setForeground(new java.awt.Color(255, 153, 0));
+        characterIDNick1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
+        jPanel2.add(characterIDNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 143, 23));
+
+        chracterMPNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterMPNick1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterMPNick1.setText("0");
+        jPanel2.add(chracterMPNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 54, 23));
+
+        characterIDNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        characterIDNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        characterIDNick_Label1.setText("ID:");
+        jPanel2.add(characterIDNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 41, -1));
+
+        chracterSPNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterSPNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterSPNick_Label1.setText("SP:");
+        jPanel2.add(chracterSPNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 29, -1));
+
+        chracterHPNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterHPNick1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterHPNick1.setText("0");
+        jPanel2.add(chracterHPNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 54, 23));
+
+        chracterHPNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterHPNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterHPNick_Label1.setText("HP:");
+        jPanel2.add(chracterHPNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 29, -1));
+
+        chracterMGNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterMGNick1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterMGNick1.setText("0");
+        jPanel2.add(chracterMGNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 54, 23));
+
+        chracterSTNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterSTNick1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterSTNick1.setText("0");
+        jPanel2.add(chracterSTNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 54, 23));
+
+        chracterSTNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterSTNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterSTNick_Label1.setText("ST:");
+        jPanel2.add(chracterSTNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 29, -1));
+
+        characterImgNick1.setText("jLabel1");
+        characterImgNick1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
+        jPanel2.add(characterImgNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 196, 211));
+
+        chracterAGNick1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterAGNick1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterAGNick1.setText("0");
+        jPanel2.add(chracterAGNick1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 54, 23));
+
+        chracterMGNick_Label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        chracterMGNick_Label1.setForeground(new java.awt.Color(255, 153, 0));
+        chracterMGNick_Label1.setText("MG:");
+        jPanel2.add(chracterMGNick_Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 35, -1));
+
         cartoonNetworkPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 360));
 
         secondQueueCartoon_label.setBackground(new java.awt.Color(0, 0, 0));
@@ -247,7 +337,7 @@ public class MainUI extends javax.swing.JFrame {
                         .addComponent(characterIDNick, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -273,8 +363,7 @@ public class MainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chracterMPNick_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(chracterMPNick, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(chracterMPNick, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -420,20 +509,35 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JPanel cartoonNetworkPanel;
     private javax.swing.JLabel cartoonNetworkPanel_title;
     private javax.swing.JLabel characterIDNick;
+    private javax.swing.JLabel characterIDNick1;
     private javax.swing.JLabel characterIDNick_Label;
+    private javax.swing.JLabel characterIDNick_Label1;
     private javax.swing.JLabel characterImgNick;
+    private javax.swing.JLabel characterImgNick1;
     private javax.swing.JLabel chracterAGNick;
+    private javax.swing.JLabel chracterAGNick1;
     private javax.swing.JLabel chracterAGNick_Label;
+    private javax.swing.JLabel chracterAGNick_Label1;
     private javax.swing.JLabel chracterHPNick;
+    private javax.swing.JLabel chracterHPNick1;
     private javax.swing.JLabel chracterHPNick_Label;
+    private javax.swing.JLabel chracterHPNick_Label1;
     private javax.swing.JLabel chracterMGNick;
+    private javax.swing.JLabel chracterMGNick1;
     private javax.swing.JLabel chracterMGNick_Label;
+    private javax.swing.JLabel chracterMGNick_Label1;
     private javax.swing.JLabel chracterMPNick;
+    private javax.swing.JLabel chracterMPNick1;
     private javax.swing.JLabel chracterMPNick_Label;
+    private javax.swing.JLabel chracterMPNick_Label1;
     private javax.swing.JLabel chracterSPNick;
+    private javax.swing.JLabel chracterSPNick1;
     private javax.swing.JLabel chracterSPNick_Label;
+    private javax.swing.JLabel chracterSPNick_Label1;
     private javax.swing.JLabel chracterSTNick;
+    private javax.swing.JLabel chracterSTNick1;
     private javax.swing.JLabel chracterSTNick_Label;
+    private javax.swing.JLabel chracterSTNick_Label1;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
