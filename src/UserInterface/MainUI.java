@@ -33,6 +33,18 @@ public class MainUI extends javax.swing.JFrame {
         cartoonNetworkPanel_title = new javax.swing.JLabel();
         networkPanel_title = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
+        secondQueueNick_label1 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        secondQueueNick1 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        topQueueNick1 = new javax.swing.JTextArea();
+        topQueueNick_label1 = new javax.swing.JLabel();
+        supportQueueNick_label1 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        thirdQueueNick1 = new javax.swing.JTextArea();
+        thirdQueueNick_label1 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        supportQueueNick1 = new javax.swing.JTextArea();
         nickelodeonPanel = new javax.swing.JPanel();
         secondQueueNick_label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -84,6 +96,62 @@ public class MainUI extends javax.swing.JFrame {
         );
 
         cartoonNetworkPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 230, 360));
+
+        secondQueueNick_label1.setBackground(new java.awt.Color(0, 0, 0));
+        secondQueueNick_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        secondQueueNick_label1.setForeground(new java.awt.Color(51, 51, 51));
+        secondQueueNick_label1.setText("Second Priority:");
+        cartoonNetworkPanel.add(secondQueueNick_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 110, 30));
+
+        secondQueueNick1.setBackground(new java.awt.Color(255, 255, 255));
+        secondQueueNick1.setColumns(20);
+        secondQueueNick1.setRows(5);
+        secondQueueNick1.setBorder(null);
+        jScrollPane6.setViewportView(secondQueueNick1);
+
+        cartoonNetworkPanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 260, 80));
+
+        topQueueNick1.setBackground(new java.awt.Color(255, 255, 255));
+        topQueueNick1.setColumns(20);
+        topQueueNick1.setRows(5);
+        topQueueNick1.setBorder(null);
+        jScrollPane5.setViewportView(topQueueNick1);
+
+        cartoonNetworkPanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 260, 80));
+
+        topQueueNick_label1.setBackground(new java.awt.Color(0, 0, 0));
+        topQueueNick_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        topQueueNick_label1.setForeground(new java.awt.Color(51, 51, 51));
+        topQueueNick_label1.setText("Top Priority:");
+        cartoonNetworkPanel.add(topQueueNick_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 110, 30));
+
+        supportQueueNick_label1.setBackground(new java.awt.Color(0, 0, 0));
+        supportQueueNick_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        supportQueueNick_label1.setForeground(new java.awt.Color(51, 51, 51));
+        supportQueueNick_label1.setText("Supports:");
+        cartoonNetworkPanel.add(supportQueueNick_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 110, 30));
+
+        thirdQueueNick1.setBackground(new java.awt.Color(255, 255, 255));
+        thirdQueueNick1.setColumns(20);
+        thirdQueueNick1.setRows(5);
+        thirdQueueNick1.setBorder(null);
+        jScrollPane7.setViewportView(thirdQueueNick1);
+
+        cartoonNetworkPanel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 260, 80));
+
+        thirdQueueNick_label1.setBackground(new java.awt.Color(0, 0, 0));
+        thirdQueueNick_label1.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
+        thirdQueueNick_label1.setForeground(new java.awt.Color(51, 51, 51));
+        thirdQueueNick_label1.setText("Third Priority:");
+        cartoonNetworkPanel.add(thirdQueueNick_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 110, 30));
+
+        supportQueueNick1.setBackground(new java.awt.Color(255, 255, 255));
+        supportQueueNick1.setColumns(20);
+        supportQueueNick1.setRows(5);
+        supportQueueNick1.setBorder(null);
+        jScrollPane8.setViewportView(supportQueueNick1);
+
+        cartoonNetworkPanel.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 260, 80));
 
         generalPanel.add(cartoonNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 600, 640));
 
@@ -219,16 +287,28 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JFormattedTextField networkPanel_title;
     private javax.swing.JPanel nickelodeonPanel;
     private javax.swing.JLabel nickelodeonPanel_title;
     private javax.swing.JTextArea secondQueueNick;
+    private javax.swing.JTextArea secondQueueNick1;
     private javax.swing.JLabel secondQueueNick_label;
+    private javax.swing.JLabel secondQueueNick_label1;
     private javax.swing.JTextArea supportQueueNick;
+    private javax.swing.JTextArea supportQueueNick1;
     private javax.swing.JLabel supportQueueNick_label;
+    private javax.swing.JLabel supportQueueNick_label1;
     private javax.swing.JTextArea thirdQueueNick;
+    private javax.swing.JTextArea thirdQueueNick1;
     private javax.swing.JLabel thirdQueueNick_label;
+    private javax.swing.JLabel thirdQueueNick_label1;
     private javax.swing.JTextArea topQueueNick;
+    private javax.swing.JTextArea topQueueNick1;
     private javax.swing.JLabel topQueueNick_label;
+    private javax.swing.JLabel topQueueNick_label1;
     // End of variables declaration//GEN-END:variables
 }
