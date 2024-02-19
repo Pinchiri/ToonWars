@@ -22,7 +22,6 @@ public class MainUI extends javax.swing.JFrame {
         this.characterImgNick.setIcon(nickImage);
         ImageIcon cartoonImage = new ImageIcon("./../Assets/CartoonImages/logo-un-show-mas.png");
         this.characterImgCartoon.setIcon(cartoonImage);
-        secondQueueNick.setText("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
 
     /**
