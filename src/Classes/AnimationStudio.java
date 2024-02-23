@@ -31,7 +31,19 @@ public class AnimationStudio {
         this.supportQueue = new Queue<>();
     }
 
-    //Getters and Setters
+    public Character getNextFighter() {
+        if (!topPriorityQueue.isEmpty()) {
+            return topPriorityQueue.dispatch();
+        } else if (!secondPriorityQueue.isEmpty()) {
+            return secondPriorityQueue.dispatch();
+        } else if (!thirdPriorityQueue.isEmpty()) {
+            return thirdPriorityQueue.dispatch();
+        } else {
+            return null;
+        }
+    }
+
+    // Getters and Setters
     public int getStudioInt() {
         return studioInt;
     }

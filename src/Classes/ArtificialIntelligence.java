@@ -7,6 +7,9 @@ package Classes;
 import static Constants.Constants.DRAW_RATE;
 import static Constants.Constants.NON_COMBAT_RATE;
 import static Constants.Constants.WIN_RATE;
+
+import java.util.concurrent.Semaphore;
+
 import DataStructures.LinkedList;
 
 /**
@@ -15,39 +18,54 @@ import DataStructures.LinkedList;
  */
 public class ArtificialIntelligence extends Thread {
 
-    private Character firstContestant;
-    private Character secondContestant;
+    private Character firstFighter;
+    private Character secondFighter;
     private int winRate;
     private int drawRate;
     private int nonCombatRate;
     private LinkedList<Character> winners;
     private Battle battleOcurring;
+    private Semaphore synchronization;
 
-    public ArtificialIntelligence(int winRate, int drawRate, int nonCombatRate) {
-        this.firstContestant = null;
-        this.secondContestant = null;
+    public ArtificialIntelligence(Semaphore synchronization) {
+        this.firstFighter = null;
+        this.secondFighter = null;
         this.winRate = WIN_RATE;
         this.drawRate = DRAW_RATE;
         this.nonCombatRate = NON_COMBAT_RATE;
         this.winners = new LinkedList<>();
         this.battleOcurring = null;
+        this.synchronization = synchronization;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                synchronization.acquire();
+                System.out.println("AI is working");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // Getters and Setters
-    public Character getFirstContestant() {
-        return firstContestant;
+    public Character getFirstFighter() {
+        return firstFighter;
     }
 
-    public void setFirstContestant(Character firstContestant) {
-        this.firstContestant = firstContestant;
+    public void setFirstFighter(Character firstFighter) {
+        this.firstFighter = firstFighter;
     }
 
-    public Character getSecondContestant() {
-        return secondContestant;
+    public Character getSecondFighter() {
+        return secondFighter;
     }
 
-    public void setSecondContestant(Character secondContestant) {
-        this.secondContestant = secondContestant;
+    public void setSecondFighter(Character secondFighter) {
+        this.secondFighter = secondFighter;
     }
 
     public int getWinRate() {

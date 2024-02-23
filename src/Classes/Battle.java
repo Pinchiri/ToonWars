@@ -10,31 +10,31 @@ package Classes;
  */
 public class Battle {
 
-    private Character firstContestant;
-    private Character secondContestant;
+    private Character firstFighter;
+    private Character secondFighter;
     private int result; // 0 = Win, 1 = Draw, 2 = Not happened
 
-    public Battle(Character firstContestant, Character secondContestant) {
-        this.firstContestant = firstContestant;
-        this.secondContestant = secondContestant;
+    public Battle(Character firstFighter, Character secondFighter) {
+        this.firstFighter = firstFighter;
+        this.secondFighter = secondFighter;
         this.result = -1;
     }
 
-    //Getters and Setters
-    public Character getFirstContestant() {
-        return firstContestant;
+    // Getters and Setters
+    public Character getFirstFighter() {
+        return firstFighter;
     }
 
-    public void setFirstContestant(Character firstContestant) {
-        this.firstContestant = firstContestant;
+    public void setFirstFighter(Character firstFighter) {
+        this.firstFighter = firstFighter;
     }
 
-    public Character getSecondContestant() {
-        return secondContestant;
+    public Character getSecondFighter() {
+        return secondFighter;
     }
 
-    public void setSecondContestant(Character secondContestant) {
-        this.secondContestant = secondContestant;
+    public void setSecondFighter(Character secondFighter) {
+        this.secondFighter = secondFighter;
     }
 
     public int getResult() {

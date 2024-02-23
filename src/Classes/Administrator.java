@@ -10,6 +10,8 @@ import static Constants.Constants.NEW_CHARACTER_CHANCE;
 import static Constants.Constants.NICKELODEON_INT;
 import static Constants.Constants.NICKELODEON_STRING;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author Rolando
@@ -20,12 +22,42 @@ public class Administrator extends Thread {
     private AnimationStudio CartoonNetwork;
     private int cyclesCounter;
     private int newCharacterChance;
+    private Semaphore synchronization;
+    private ArtificialIntelligence AI;
 
-    public Administrator() {
+    public Administrator(Semaphore synchronization, ArtificialIntelligence AI) {
         this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING);
         this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING);
         this.cyclesCounter = 0;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
+        this.synchronization = synchronization;
+        this.AI = AI;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                System.out.println("Administrator is working");
+                sleep(100);
+                synchronization.release();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void chooseFighters() {
+        Character firstFighter = Nickelodeon.getNextFighter();
+        getAI().setFirstFighter(firstFighter);
+        Character secondFighter = CartoonNetwork.getNextFighter();
+        getAI().setSecondFighter(secondFighter);
+
+        if (firstFighter != null && secondFighter != null) {
+            Battle battle = new Battle(firstFighter, secondFighter);
+            getAI().setBattleOcurring(battle);
+        }
     }
 
     // Getters and Setters
@@ -61,4 +93,15 @@ public class Administrator extends Thread {
         this.newCharacterChance = newCharacterChance;
     }
 
+    public Semaphore getSynchronization() {
+        return synchronization;
+    }
+
+    public ArtificialIntelligence getAI() {
+        return AI;
+    }
+
+    public void setAI(ArtificialIntelligence AI) {
+        this.AI = AI;
+    }
 }

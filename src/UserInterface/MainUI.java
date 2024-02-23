@@ -4,7 +4,10 @@
  */
 package UserInterface;
 
+import Classes.Administrator;
+import Classes.ArtificialIntelligence;
 import java.awt.Image;
+import java.util.concurrent.Semaphore;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -23,6 +26,13 @@ public class MainUI extends javax.swing.JFrame {
 
         changeCharacterImage(0, "src/Assets/NickImages/logo-de-avatar-la-leyenda-de-aang-avatar.png");
         changeCharacterImage(1, "src/Assets/CartoonImages/logo-un-show-mas.png");
+
+        Semaphore sync = new Semaphore(0);
+        Administrator admin = new Administrator(sync);
+        ArtificialIntelligence ai = new ArtificialIntelligence(sync);
+
+        admin.start();
+        ai.start();
 
     }
 
@@ -125,6 +135,7 @@ public class MainUI extends javax.swing.JFrame {
         supportQueueNick_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         generalPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
