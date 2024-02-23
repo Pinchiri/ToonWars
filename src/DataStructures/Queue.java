@@ -7,7 +7,7 @@ public class Queue<T> {
     private Node<T> head, tail;
     private int size;
 
-    //Constructor
+    // Constructor
     public Queue() {
         this.head = null;
         this.tail = null;
@@ -69,6 +69,28 @@ public class Queue<T> {
     }
 
     /**
+     * Obtiene el elemento de la Cola que se encuentra en el índice indicado
+     *
+     * @param index (Índice del elemento que se desea obtener)
+     * @return
+     */
+    public T getElement(int index) {
+        if (isEmpty()) {
+            return null;
+
+        } else {
+            Node<T> pointer = getHead();
+            int counter = 0;
+            while (counter < index && pointer.getNext() != null) {
+                pointer = pointer.getNext();
+                counter++;
+            }
+            return pointer.getData();
+
+        }
+    }
+
+    /**
      * Imprime la cola
      */
     public void printQueue() {
@@ -87,7 +109,7 @@ public class Queue<T> {
         JOptionPane.showMessageDialog(null, sQueue);
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public Node getHead() {
         return head;
     }

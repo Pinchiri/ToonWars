@@ -17,6 +17,9 @@ import javax.swing.JLabel;
  */
 public class MainUI extends javax.swing.JFrame {
 
+    private ArtificialIntelligence AI;
+    private Administrator admin;
+
     /**
      * Creates new form MainUI
      */
@@ -28,11 +31,12 @@ public class MainUI extends javax.swing.JFrame {
         changeCharacterImage(1, "src/Assets/CartoonImages/logo-un-show-mas.png");
 
         Semaphore sync = new Semaphore(0);
-        Administrator admin = new Administrator(sync);
-        ArtificialIntelligence ai = new ArtificialIntelligence(sync);
 
-        admin.start();
-        ai.start();
+        setAI(new ArtificialIntelligence(sync));
+        setAdmin(new Administrator(sync, getAI()));
+
+        getAdmin().start();
+        getAI().start();
 
     }
 
@@ -60,6 +64,22 @@ public class MainUI extends javax.swing.JFrame {
             default ->
                 null;
         };
+    }
+
+    public ArtificialIntelligence getAI() {
+        return AI;
+    }
+
+    public void setAI(ArtificialIntelligence AI) {
+        this.AI = AI;
+    }
+
+    public Administrator getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Administrator admin) {
+        this.admin = admin;
     }
 
     /**

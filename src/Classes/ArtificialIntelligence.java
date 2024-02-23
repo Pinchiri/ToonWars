@@ -8,6 +8,7 @@ import static Constants.Constants.DRAW_RATE;
 import static Constants.Constants.NON_COMBAT_RATE;
 import static Constants.Constants.WIN_RATE;
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 import DataStructures.LinkedList;
@@ -42,12 +43,49 @@ public class ArtificialIntelligence extends Thread {
     public void run() {
         while (true) {
             try {
-                synchronization.acquire();
-                System.out.println("AI is working");
+                getSynchronization().acquire();
+                chooseWinner();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void chooseWinner() {
+        // TODO - Modify User Interface to show the winner
+        if (getBattleOcurring() != null) {
+            Random random = new Random();
+            int randomResult = random.nextInt(1, 101);
+
+            if (randomResult <= getDrawRate()) {
+                getBattleOcurring().setResult(1);
+                getWinners().addLast(null);
+                System.out.println("Empate");
+            } else if (randomResult > getDrawRate() && randomResult <= getDrawRate() + getNonCombatRate()) {
+                getBattleOcurring().setResult(2);
+                getWinners().addLast(null);
+                System.out.println("No ocurrio");
+            } else if (randomResult > getDrawRate() + getNonCombatRate()
+                    && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
+                determineWinner(random);
+            }
+        }
+
+    }
+
+    public void determineWinner(Random random) {
+        int pickWinner = random.nextInt(1, 3);
+        if (pickWinner == 1) {
+            getWinners().addLast(getFirstFighter());
+            getBattleOcurring().setResult(0);
+            getBattleOcurring().setWinner(getFirstFighter());
+            System.out.println("Ganador: " + getFirstFighter().getName());
+        } else {
+            getWinners().addLast(getSecondFighter());
+            getBattleOcurring().setResult(0);
+            getBattleOcurring().setWinner(getSecondFighter());
+            System.out.println("Ganador: " + getSecondFighter().getName());
         }
     }
 
@@ -106,6 +144,10 @@ public class ArtificialIntelligence extends Thread {
 
     public void setBattleOcurring(Battle battleOcurring) {
         this.battleOcurring = battleOcurring;
+    }
+
+    public Semaphore getSynchronization() {
+        return synchronization;
     }
 
 }

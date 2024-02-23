@@ -16,12 +16,12 @@ public class Character {
     private Stats stats;
     private int starvationCounter;
 
-    public Character(int id, String name, int priorityLevel, Stats stats, int starvationCounter) {
+    public Character(int id, String name, int priorityLevel, Stats stats) {
         this.id = id;
         this.name = name;
         this.priorityLevel = priorityLevel;
         this.stats = stats;
-        this.starvationCounter = starvationCounter;
+        this.starvationCounter = 0;
     }
 
     public void increaseStarvationCounter() {

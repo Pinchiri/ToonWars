@@ -11,9 +11,9 @@ package Constants;
 public class Constants {
 
     // Odds
-    public static final int WIN_RATE = 40;
     public static final int DRAW_RATE = 27;
     public static final int NON_COMBAT_RATE = 33;
+    public static final int WIN_RATE = 40;
 
     public static final int QUALITY_ABILITIES_CHANCE = 60;
     public static final int QUALITY_HP_CHANCE = 70;

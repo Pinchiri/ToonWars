@@ -43,6 +43,52 @@ public class AnimationStudio {
         }
     }
 
+    public void increaseStarvationCounters() {
+        for (int i = 0; i < getSecondPriorityQueue().getSize() - 1; i++) {
+            modifyCharacterPriority(i, 2);
+        }
+
+        for (int i = 0; i < getThirdPriorityQueue().getSize() - 1; i++) {
+            modifyCharacterPriority(i, 3);
+        }
+    }
+
+    public void modifyCharacterPriority(int index, int queuePriorityLevel) {
+        Queue<Character> queue = getQueueByPriorityLevel(queuePriorityLevel);
+        Character character = queue.getElement(index);
+        character.increaseStarvationCounter();
+
+        if (character.getStarvationCounter() == 8) {
+            character.setPriorityLevel(queuePriorityLevel - 1);
+            queue.remove();
+            queue.add(character);
+        }
+    }
+
+    public Queue<Character> getQueueByPriorityLevel(int priorityLevel) {
+        switch (priorityLevel) {
+            case 1:
+                return getTopPriorityQueue();
+            case 2:
+                return getSecondPriorityQueue();
+            case 3:
+                return getThirdPriorityQueue();
+            default:
+                return null;
+        }
+    }
+
+    public void addCharacter(Character character) {
+        // TODO - Refactor to Add random character to the Studio
+        if (character.isTopPriority()) {
+            topPriorityQueue.add(character);
+        } else if (character.getPriorityLevel() == 2) {
+            secondPriorityQueue.add(character);
+        } else if (character.getPriorityLevel() == 3) {
+            thirdPriorityQueue.add(character);
+        }
+    }
+
     // Getters and Setters
     public int getStudioInt() {
         return studioInt;

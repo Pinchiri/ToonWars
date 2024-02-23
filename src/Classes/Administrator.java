@@ -10,6 +10,7 @@ import static Constants.Constants.NEW_CHARACTER_CHANCE;
 import static Constants.Constants.NICKELODEON_INT;
 import static Constants.Constants.NICKELODEON_STRING;
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -38,9 +39,43 @@ public class Administrator extends Thread {
     public void run() {
         while (true) {
             try {
-                System.out.println("Administrator is working");
-                sleep(100);
-                synchronization.release();
+                // TODO - Remove when implemented the correct initialization
+                Character newCharacter = new Character(1, "Eskere 1", 1, new Stats(1, 1, 1, 1, 1, 1));
+                Character newCharacter2 = new Character(2, "Eskere 2", 1, new Stats(1, 1, 1, 1, 1, 1));
+
+                // TODO - Remove when implemented the correct initialization
+                getNickelodeon().addCharacter(newCharacter);
+                getCartoonNetwork().addCharacter(newCharacter2);
+
+                chooseFighters();
+                if (getAI().getBattleOcurring() == null) {
+                    System.out.println("No hay peleadores disponibles");
+                    sleep(2000);
+                    continue;
+                }
+
+                System.out.println(
+                        "Ya se escogieron los peleadores: " +
+                                getAI().getBattleOcurring().getFirstFighter().getName()
+                                + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
+
+                getNickelodeon().increaseStarvationCounters();
+                getCartoonNetwork().increaseStarvationCounters();
+
+                if (cyclesCounter == 2) {
+                    setCyclesCounter(0);
+
+                    Random random = new Random();
+
+                    if (random.nextInt(1, 101) < newCharacterChance) {
+                        // TODO - Change when Add Character method is refactored
+                    }
+                }
+
+                cyclesCounter++;
+
+                getSynchronization().release();
+                sleep(2000);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -49,9 +84,9 @@ public class Administrator extends Thread {
     }
 
     public void chooseFighters() {
-        Character firstFighter = Nickelodeon.getNextFighter();
+        Character firstFighter = getNickelodeon().getNextFighter();
         getAI().setFirstFighter(firstFighter);
-        Character secondFighter = CartoonNetwork.getNextFighter();
+        Character secondFighter = getCartoonNetwork().getNextFighter();
         getAI().setSecondFighter(secondFighter);
 
         if (firstFighter != null && secondFighter != null) {
