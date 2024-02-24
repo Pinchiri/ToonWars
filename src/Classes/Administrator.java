@@ -9,6 +9,7 @@ import static Constants.Constants.CARTOON_NETWORK_STRING;
 import static Constants.Constants.NEW_CHARACTER_CHANCE;
 import static Constants.Constants.NICKELODEON_INT;
 import static Constants.Constants.NICKELODEON_STRING;
+import static Constants.Constants.ZERO_STATS;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
@@ -54,10 +55,10 @@ public class Administrator extends Thread {
                     for (int i = 0; i < 20; i++) {
                         Character newCharacter = new Character(
                                 getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
-                                "Eskere 1", 1, new Stats(1, 1, 1, 1, 1, 1));
+                                "Eskere 1", 1, new Stats(100, 20, 15, 100, 1, 1));
                         Character newCharacter2 = new Character(
                                 getCartoonNetwork().generateCharacterStringID(CARTOON_NETWORK_INT), "Eskere 2", 1,
-                                new Stats(1, 1, 1, 1, 1, 1));
+                                new Stats(150, 1, 1, 90, 50, 100));
                         getNickelodeon().addCharacter(newCharacter);
                         getCartoonNetwork().addCharacter(newCharacter2);
                     }
@@ -109,8 +110,11 @@ public class Administrator extends Thread {
         getAI().setSecondFighter(secondFighter);
 
         if (firstFighter != null && secondFighter != null) {
+            updateCharactersUI(firstFighter, secondFighter);
             Battle battle = new Battle(firstFighter, secondFighter);
             getAI().setBattleOcurring(battle);
+        } else {
+            getAI().setBattleOcurring(null);
         }
 
     }
@@ -118,6 +122,22 @@ public class Administrator extends Thread {
     public void updateUIValues() {
         getNickelodeon().updateQueuesUI();
         getCartoonNetwork().updateQueuesUI();
+
+    }
+
+    public void updateCharactersUI(Character firstFighter, Character secondFighter) {
+        if (firstFighter != null && secondFighter != null) {
+            getUserInterface().changeCharacterStatsByStudio(getNickelodeon().getStudioInt(), firstFighter.getStats(),
+                    firstFighter.getID());
+            getUserInterface().changeCharacterStatsByStudio(getCartoonNetwork().getStudioInt(),
+                    secondFighter.getStats(),
+                    secondFighter.getID());
+        } else {
+            getUserInterface().changeCharacterStatsByStudio(getNickelodeon().getStudioInt(), ZERO_STATS, null);
+            getUserInterface().changeCharacterStatsByStudio(getCartoonNetwork().getStudioInt(), ZERO_STATS, null);
+
+        }
+
     }
 
     public AnimationStudio getStudioByStudioInt(int studioInt) {

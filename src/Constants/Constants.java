@@ -4,6 +4,8 @@
  */
 package Constants;
 
+import Classes.Stats;
+
 /**
  *
  * @author Rolando
@@ -30,5 +32,8 @@ public class Constants {
     // Cartoon Network
     public static final int CARTOON_NETWORK_INT = 1;
     public static final String CARTOON_NETWORK_STRING = "Cartoon Network";
+
+    // Stats when Null
+    public static final Stats ZERO_STATS = new Stats();
 
 }

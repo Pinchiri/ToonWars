@@ -114,9 +114,10 @@ public class MainUI extends javax.swing.JFrame {
         }
     }
 
-    public void changeCharacterStatsByStudio(int studioInt, Stats characterStats) {
+    public void changeCharacterStatsByStudio(int studioInt, Stats characterStats, String characterID) {
         switch (studioInt) {
             case 0 -> {
+                characterIDNick.setText(characterID);
                 chracterHPNick.setText(Integer.toString(characterStats.getHP()));
                 chracterSTNick.setText(Integer.toString(characterStats.getStrength()));
                 chracterAGNick.setText(Integer.toString(characterStats.getAgility()));
@@ -126,6 +127,7 @@ public class MainUI extends javax.swing.JFrame {
 
             }
             case 1 -> {
+                characterIDCartoon.setText(characterID);
                 chracterHPCartoon.setText(Integer.toString(characterStats.getHP()));
                 chracterSTCartoon.setText(Integer.toString(characterStats.getStrength()));
                 chracterAGCartoon.setText(Integer.toString(characterStats.getAgility()));

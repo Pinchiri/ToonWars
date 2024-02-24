@@ -17,6 +17,15 @@ public class Stats {
     private int magic;
     private int manaPoints;
 
+    public Stats() {
+        this.HP = 0;
+        this.strength = 0;
+        this.agility = 0;
+        this.speed = 0;
+        this.magic = 0;
+        this.manaPoints = 0;
+    }
+
     public Stats(int HP, int strength, int agility, int speed, int magic, int manaPoints) {
         this.HP = HP;
         this.strength = strength;
@@ -26,7 +35,7 @@ public class Stats {
         this.manaPoints = manaPoints;
     }
 
-    //Getters and Setters
+    // Getters and Setters
     public int getHP() {
         return HP;
     }
