@@ -12,7 +12,7 @@ import Utils.Functions;
  */
 public class StatsCreator {
 
-    public static Stats creatStats() {
+    public static Stats createStats() {
     int HP = Functions.getRandomInt(100, 200);
     int strength = Functions.getRandomInt(100, 200);
     int agility = Functions.getRandomInt(100, 200);

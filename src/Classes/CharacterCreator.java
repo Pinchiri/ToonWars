@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import Utils.Functions;
+
 /**
  *
  * @author david
@@ -11,7 +13,7 @@ package Classes;
 public class CharacterCreator {
 
     private Stats getStats() {
-        return StatsCreator.creatStats();
+        return StatsCreator.createStats();
     }
 
     private Character createCharacter(int studioInt, int nextCharacterInt, String name) {
@@ -20,7 +22,8 @@ public class CharacterCreator {
         String nameNoBlanks = name.replace(" ", "");
         String id = studio + "-" + name + "-" + characterInt;
         Stats stats = this.getStats();
-        return new Character(id, name, 1, stats);
+        int priority = Functions.getRandomInt(1, 3);
+        return new Character(id, name, priority, stats);
     }
 
     // Nick Characters Create Methods
@@ -121,6 +124,107 @@ public class CharacterCreator {
 
     public Character createMingHua(int studioInt, int nextCharacterInt) {
         String name = "Ming-Hua";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+    
+    //Cartoon Characters Create Methods
+     public Character createMordecai(int studioInt, int nextCharacterInt){
+        String name = "Mordecai";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createRigby(int studioInt, int nextCharacterInt){
+        String name = "Rigby";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createMuscleMan(int studioInt, int nextCharacterInt){
+        String name = "Muscle Man";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createPops(int studioInt, int nextCharacterInt){
+        String name = "Pops";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createSkips(int studioInt, int nextCharacterInt){
+        String name = "Skips";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createBenson(int studioInt, int nextCharacterInt){
+        String name = "Benson";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createEileen(int studioInt, int nextCharacterInt){
+        String name = "Eileen";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createThomas(int studioInt, int nextCharacterInt){
+        String name = "Thomas";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createHighFiveGhost(int studioInt, int nextCharacterInt){
+        String name = "High Five Ghost";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createDeath(int studioInt, int nextCharacterInt){
+        String name = "Death";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createMrMaellard(int studioInt, int nextCharacterInt){
+        String name = "Mr. Maellard";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createGary(int studioInt, int nextCharacterInt){
+        String name = "Gary";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createTechmo(int studioInt, int nextCharacterInt){
+        String name = "Techmo";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createGarrettBobbyFergusonJr(int studioInt, int nextCharacterInt){
+        String name = "Garrett Bobby Ferguson Jr.";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createGarrettBobbyFerguson(int studioInt, int nextCharacterInt){
+        String name = "Garrett Bobby Ferguson";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createStarla(int studioInt, int nextCharacterInt){
+        String name = "Starla";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createMargaret(int studioInt, int nextCharacterInt){
+        String name = "Margaret";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createCJ(int studioInt, int nextCharacterInt){
+        String name = "CJ";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createPartyPete(int studioInt, int nextCharacterInt){
+        String name = "Party Pete";
+        return this.createCharacter(studioInt, nextCharacterInt, name);
+    }
+
+    public Character createDougShablowski(int studioInt, int nextCharacterInt){
+        String name = "Doug Shablowski";
         return this.createCharacter(studioInt, nextCharacterInt, name);
     }
 }
