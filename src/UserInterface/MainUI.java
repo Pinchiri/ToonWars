@@ -32,8 +32,8 @@ public class MainUI extends javax.swing.JFrame {
 
         Semaphore sync = new Semaphore(0);
 
-        setAI(new ArtificialIntelligence(sync));
-        setAdmin(new Administrator(sync, getAI()));
+        setAI(new ArtificialIntelligence(sync, this));
+        setAdmin(new Administrator(sync, getAI(), this));
 
         getAdmin().start();
         getAI().start();

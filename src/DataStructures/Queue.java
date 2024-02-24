@@ -93,7 +93,7 @@ public class Queue<T> {
     /**
      * Imprime la cola
      */
-    public void printQueue() {
+    public String printQueue() {
         Node pointer = getHead();
         String sQueue = "";
 
@@ -106,7 +106,7 @@ public class Queue<T> {
                 pointer = pointer.getNext();
             }
         }
-        JOptionPane.showMessageDialog(null, sQueue);
+        return sQueue;
     }
 
     // Getters and Setters

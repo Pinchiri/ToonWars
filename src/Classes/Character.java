@@ -10,13 +10,13 @@ package Classes;
  */
 public class Character {
 
-    private int id;
+    private String id;
     private String name;
     private int priorityLevel;
     private Stats stats;
     private int starvationCounter;
 
-    public Character(int id, String name, int priorityLevel, Stats stats) {
+    public Character(String id, String name, int priorityLevel, Stats stats) {
         this.id = id;
         this.name = name;
         this.priorityLevel = priorityLevel;
@@ -35,11 +35,11 @@ public class Character {
     }
 
     // Getters and Setters
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

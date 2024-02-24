@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import static Classes.Main.NUMBER_ID;
 import DataStructures.LinkedList;
 import DataStructures.Queue;
 
@@ -51,6 +52,7 @@ public class AnimationStudio {
         for (int i = 0; i < getThirdPriorityQueue().getSize() - 1; i++) {
             modifyCharacterPriority(i, 3);
         }
+
     }
 
     public void modifyCharacterPriority(int index, int queuePriorityLevel) {
@@ -61,7 +63,9 @@ public class AnimationStudio {
         if (character.getStarvationCounter() == 8) {
             character.setPriorityLevel(queuePriorityLevel - 1);
             queue.remove();
-            queue.add(character);
+
+            Queue<Character> newQueue = getQueueByPriorityLevel(queuePriorityLevel - 1);
+            newQueue.add(character);
         }
     }
 
@@ -73,6 +77,23 @@ public class AnimationStudio {
                 return getSecondPriorityQueue();
             case 3:
                 return getThirdPriorityQueue();
+            default:
+                return null;
+        }
+    }
+
+    public String generateCharacterStringID(int studioInt) {
+        String characterID;
+        switch (studioInt) {
+            case 0:
+                characterID = "A" + Integer.toString(NUMBER_ID);
+                NUMBER_ID++;
+                return characterID;
+
+            case 1:
+                characterID = "U" + Integer.toString(NUMBER_ID);
+                NUMBER_ID++;
+                return characterID;
             default:
                 return null;
         }

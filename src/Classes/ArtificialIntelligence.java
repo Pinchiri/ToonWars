@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 import DataStructures.LinkedList;
+import UserInterface.MainUI;
 
 /**
  *
@@ -27,8 +28,9 @@ public class ArtificialIntelligence extends Thread {
     private LinkedList<Character> winners;
     private Battle battleOcurring;
     private Semaphore synchronization;
+    private MainUI userInterface;
 
-    public ArtificialIntelligence(Semaphore synchronization) {
+    public ArtificialIntelligence(Semaphore synchronization, MainUI userInterface) {
         this.firstFighter = null;
         this.secondFighter = null;
         this.winRate = WIN_RATE;
@@ -37,14 +39,16 @@ public class ArtificialIntelligence extends Thread {
         this.winners = new LinkedList<>();
         this.battleOcurring = null;
         this.synchronization = synchronization;
+        this.userInterface = userInterface;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                getSynchronization().acquire();
                 chooseWinner();
+                getSynchronization().release();
+                sleep(2000);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -56,22 +60,19 @@ public class ArtificialIntelligence extends Thread {
         // TODO - Modify User Interface to show the winner
         if (getBattleOcurring() != null) {
             Random random = new Random();
-            int randomResult = random.nextInt(1, 101);
+            int randomResult = random.nextInt(1, 100);
 
             if (randomResult <= getDrawRate()) {
                 getBattleOcurring().setResult(1);
-                getWinners().addLast(null);
                 System.out.println("Empate");
             } else if (randomResult > getDrawRate() && randomResult <= getDrawRate() + getNonCombatRate()) {
                 getBattleOcurring().setResult(2);
-                getWinners().addLast(null);
                 System.out.println("No ocurrio");
             } else if (randomResult > getDrawRate() + getNonCombatRate()
                     && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
                 determineWinner(random);
             }
         }
-
     }
 
     public void determineWinner(Random random) {
@@ -150,4 +151,7 @@ public class ArtificialIntelligence extends Thread {
         return synchronization;
     }
 
+    public MainUI getUserInterface() {
+        return userInterface;
+    }
 }

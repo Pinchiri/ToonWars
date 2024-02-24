@@ -10,7 +10,9 @@ import UserInterface.MainUI;
  *
  * @author rolan
  */
-public class ToonWars {
+public class Main {
+
+    public static int NUMBER_ID = 1;
 
     /**
      * @param args the command line arguments
@@ -18,6 +20,7 @@ public class ToonWars {
     public static void main(String[] args) {
         // TODO code application logic here
         MainUI ui = new MainUI();
+
         ui.setVisible(true);
     }
 
