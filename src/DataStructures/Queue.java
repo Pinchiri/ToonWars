@@ -1,6 +1,6 @@
 package DataStructures;
 
-import javax.swing.JOptionPane;
+import Classes.Character;
 
 public class Queue<T> {
 
@@ -98,13 +98,13 @@ public class Queue<T> {
         String sQueue = "";
 
         while (pointer != null) {
+            Character character = (Character) pointer.getData();
             if (pointer == getTail()) {
-                sQueue += pointer.getData();
-
+                sQueue += character.getID();
             } else {
-                sQueue += pointer.getData() + ", ";
-                pointer = pointer.getNext();
+                sQueue += character.getID() + ", ";
             }
+            pointer = pointer.getNext();
         }
         return sQueue;
     }

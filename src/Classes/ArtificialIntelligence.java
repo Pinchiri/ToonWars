@@ -86,17 +86,19 @@ public class ArtificialIntelligence extends Thread {
     }
 
     public void determineWinner(Random random) {
-        int pickWinner = random.nextInt(1, 3);
-        if (pickWinner == 1) {
-            getWinners().addLast(getFirstFighter());
-            getBattleOcurring().setResult(0);
-            getBattleOcurring().setWinner(getFirstFighter());
-            System.out.println("Ganador: " + getFirstFighter().getName());
-        } else {
-            getWinners().addLast(getSecondFighter());
-            getBattleOcurring().setResult(0);
-            getBattleOcurring().setWinner(getSecondFighter());
-            System.out.println("Ganador: " + getSecondFighter().getName());
+        if (getFirstFighter() != null && getSecondFighter() != null) {
+            int pickWinner = random.nextInt(1, 3);
+            if (pickWinner == 1) {
+                getWinners().addLast(getFirstFighter());
+                getBattleOcurring().setResult(0);
+                getBattleOcurring().setWinner(getFirstFighter());
+                System.out.println("Ganador: " + getFirstFighter().getName());
+            } else {
+                getWinners().addLast(getSecondFighter());
+                getBattleOcurring().setResult(0);
+                getBattleOcurring().setWinner(getSecondFighter());
+                System.out.println("Ganador: " + getSecondFighter().getName());
+            }
         }
     }
 

@@ -32,8 +32,8 @@ public class Administrator extends Thread {
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
             MainUI userInterface) {
-        this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING);
-        this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING);
+        this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING, userInterface);
+        this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING, userInterface);
         this.cyclesCounter = 0;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
         this.synchronization = synchronization;
@@ -50,16 +50,20 @@ public class Administrator extends Thread {
                 sleep(100);
 
                 // TODO - Remove when implemented the correct initialization
-                Character newCharacter = new Character(getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
-                        "Eskere 1", 1, new Stats(1, 1, 1, 1, 1, 1));
-                Character newCharacter2 = new Character(
-                        getCartoonNetwork().generateCharacterStringID(CARTOON_NETWORK_INT), "Eskere 2", 1,
-                        new Stats(1, 1, 1, 1, 1, 1));
+                if (getAI().getBattleOcurring() == null) {
+                    for (int i = 0; i < 20; i++) {
+                        Character newCharacter = new Character(
+                                getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
+                                "Eskere 1", 1, new Stats(1, 1, 1, 1, 1, 1));
+                        Character newCharacter2 = new Character(
+                                getCartoonNetwork().generateCharacterStringID(CARTOON_NETWORK_INT), "Eskere 2", 1,
+                                new Stats(1, 1, 1, 1, 1, 1));
+                        getNickelodeon().addCharacter(newCharacter);
+                        getCartoonNetwork().addCharacter(newCharacter2);
+                    }
+                }
 
-                // TODO - Remove when implemented the correct initialization
-                getNickelodeon().addCharacter(newCharacter);
-                getCartoonNetwork().addCharacter(newCharacter2);
-
+                updateUIValues();
                 chooseFighters();
 
                 if (getAI().getBattleOcurring() == null) {
@@ -89,6 +93,7 @@ public class Administrator extends Thread {
                 cyclesCounter++;
 
                 getSynchronization().release();
+
                 getReadyAI().acquire();
 
             } catch (Exception e) {
@@ -107,18 +112,12 @@ public class Administrator extends Thread {
             Battle battle = new Battle(firstFighter, secondFighter);
             getAI().setBattleOcurring(battle);
         }
-    }
-
-    public void updateUserInterfaceValues() {
 
     }
 
-    public void updateUserInterfaceQueues() {
-
-    }
-
-    public void updateUserInterfaceCharacters() {
-
+    public void updateUIValues() {
+        getNickelodeon().updateQueuesUI();
+        getCartoonNetwork().updateQueuesUI();
     }
 
     public AnimationStudio getStudioByStudioInt(int studioInt) {
