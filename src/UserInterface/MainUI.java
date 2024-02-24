@@ -27,14 +27,16 @@ public class MainUI extends javax.swing.JFrame {
     public MainUI() {
         super("ToonWars");
         initComponents();
+        setLocationRelativeTo(null);
 
         changeCharacterImage(0, "src/Assets/NickImages/logo-de-avatar-la-leyenda-de-aang-avatar.png");
         changeCharacterImage(1, "src/Assets/CartoonImages/logo-un-show-mas.png");
 
         Semaphore sync = new Semaphore(0);
+        Semaphore readyAI = new Semaphore(0);
 
-        setAI(new ArtificialIntelligence(sync, this));
-        setAdmin(new Administrator(sync, getAI(), this));
+        setAI(new ArtificialIntelligence(sync, readyAI, 1000, this));
+        setAdmin(new Administrator(sync, readyAI, getAI(), this));
 
         getAdmin().start();
         getAI().start();

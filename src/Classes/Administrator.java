@@ -26,10 +26,12 @@ public class Administrator extends Thread {
     private int cyclesCounter;
     private int newCharacterChance;
     private Semaphore synchronization;
+    private Semaphore readyAI;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
 
-    public Administrator(Semaphore synchronization, ArtificialIntelligence AI, MainUI userInterface) {
+    public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
+            MainUI userInterface) {
         this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING);
         this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING);
         this.cyclesCounter = 0;
@@ -37,14 +39,16 @@ public class Administrator extends Thread {
         this.synchronization = synchronization;
         this.AI = AI;
         this.userInterface = userInterface;
+        this.readyAI = readyAI;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
+                getUserInterface().changeAIStatus("Waiting");
+                sleep(100);
 
-                getSynchronization().acquire();
                 // TODO - Remove when implemented the correct initialization
                 Character newCharacter = new Character(getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
                         "Eskere 1", 1, new Stats(1, 1, 1, 1, 1, 1));
@@ -66,8 +70,8 @@ public class Administrator extends Thread {
 
                 System.out.println(
                         "Ya se escogieron los peleadores: "
-                        + getAI().getBattleOcurring().getFirstFighter().getName()
-                        + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
+                                + getAI().getBattleOcurring().getFirstFighter().getName()
+                                + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
 
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
@@ -83,7 +87,9 @@ public class Administrator extends Thread {
                 }
 
                 cyclesCounter++;
-                getUserInterface().changeAIStatus("Picking Winner");
+
+                getSynchronization().release();
+                getReadyAI().acquire();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -173,5 +179,9 @@ public class Administrator extends Thread {
 
     public MainUI getUserInterface() {
         return userInterface;
+    }
+
+    public Semaphore getReadyAI() {
+        return readyAI;
     }
 }
