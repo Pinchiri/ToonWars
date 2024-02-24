@@ -46,9 +46,13 @@ public class ArtificialIntelligence extends Thread {
     public void run() {
         while (true) {
             try {
+                getUserInterface().changeAIStatus("Waiting");
+                sleep(100);
+
                 chooseWinner();
                 getSynchronization().release();
-                sleep(2000);
+
+                sleep(1000);
 
             } catch (Exception e) {
                 e.printStackTrace();

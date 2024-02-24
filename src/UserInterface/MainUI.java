@@ -6,6 +6,7 @@ package UserInterface;
 
 import Classes.Administrator;
 import Classes.ArtificialIntelligence;
+import Classes.Stats;
 import java.awt.Image;
 import java.util.concurrent.Semaphore;
 import javax.swing.ImageIcon;
@@ -38,6 +39,34 @@ public class MainUI extends javax.swing.JFrame {
         getAdmin().start();
         getAI().start();
 
+    }
+
+    public void changeCharacterStatsByStudio(int studioInt, Stats characterStats) {
+        switch (studioInt) {
+            case 0 -> {
+                chracterHPNick.setText(Integer.toString(characterStats.getHP()));
+                chracterSTNick.setText(Integer.toString(characterStats.getStrength()));
+                chracterAGNick.setText(Integer.toString(characterStats.getAgility()));
+                chracterSPNick.setText(Integer.toString(characterStats.getSpeed()));
+                chracterMGNick.setText(Integer.toString(characterStats.getMagic()));
+                chracterMPNick.setText(Integer.toString(characterStats.getManaPoints()));
+
+            }
+            case 1 -> {
+                chracterHPCartoon.setText(Integer.toString(characterStats.getHP()));
+                chracterSTCartoon.setText(Integer.toString(characterStats.getStrength()));
+                chracterAGCartoon.setText(Integer.toString(characterStats.getAgility()));
+                chracterSPCartoon.setText(Integer.toString(characterStats.getSpeed()));
+                chracterMGCartoon.setText(Integer.toString(characterStats.getMagic()));
+                chracterMPCartoon.setText(Integer.toString(characterStats.getManaPoints()));
+            }
+            default -> {
+            }
+        }
+    }
+
+    public void changeAIStatus(String status) {
+        statusAI.setText(status);
     }
 
     public void changeCharacterImage(int studioInt, String characterImagePath) {
@@ -123,6 +152,8 @@ public class MainUI extends javax.swing.JFrame {
         thirdQueueCartoon_label = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         supportQueueCartoon = new javax.swing.JTextArea();
+        statusAI = new javax.swing.JLabel();
+        AI_label = new javax.swing.JLabel();
         nickelodeonPanel = new javax.swing.JPanel();
         secondQueueNick_label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -311,6 +342,16 @@ public class MainUI extends javax.swing.JFrame {
         jScrollPane8.setViewportView(supportQueueCartoon);
 
         cartoonNetworkPanel.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 260, 80));
+
+        statusAI.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        statusAI.setForeground(new java.awt.Color(51, 51, 51));
+        statusAI.setText("Waiting");
+        cartoonNetworkPanel.add(statusAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 190, 30));
+
+        AI_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        AI_label.setForeground(new java.awt.Color(51, 51, 51));
+        AI_label.setText("AI:");
+        cartoonNetworkPanel.add(AI_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 40, 30));
 
         generalPanel.add(cartoonNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 600, 640));
 
@@ -501,6 +542,7 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AI_label;
     private javax.swing.JPanel cartoonNetworkPanel;
     private javax.swing.JLabel cartoonNetworkPanel_title;
     private javax.swing.JLabel characterIDCartoon;
@@ -551,6 +593,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel secondQueueCartoon_label;
     private javax.swing.JTextArea secondQueueNick;
     private javax.swing.JLabel secondQueueNick_label;
+    private javax.swing.JLabel statusAI;
     private javax.swing.JTextArea supportQueueCartoon;
     private javax.swing.JLabel supportQueueCartoon_label;
     private javax.swing.JTextArea supportQueueNick;

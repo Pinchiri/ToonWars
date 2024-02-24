@@ -43,6 +43,7 @@ public class Administrator extends Thread {
     public void run() {
         while (true) {
             try {
+
                 getSynchronization().acquire();
                 // TODO - Remove when implemented the correct initialization
                 Character newCharacter = new Character(getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
@@ -56,6 +57,7 @@ public class Administrator extends Thread {
                 getCartoonNetwork().addCharacter(newCharacter2);
 
                 chooseFighters();
+
                 if (getAI().getBattleOcurring() == null) {
                     System.out.println("No hay peleadores disponibles");
                     sleep(2000);
@@ -64,8 +66,8 @@ public class Administrator extends Thread {
 
                 System.out.println(
                         "Ya se escogieron los peleadores: "
-                                + getAI().getBattleOcurring().getFirstFighter().getName()
-                                + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
+                        + getAI().getBattleOcurring().getFirstFighter().getName()
+                        + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
 
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
@@ -81,6 +83,7 @@ public class Administrator extends Thread {
                 }
 
                 cyclesCounter++;
+                getUserInterface().changeAIStatus("Picking Winner");
 
             } catch (Exception e) {
                 e.printStackTrace();

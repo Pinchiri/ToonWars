@@ -10,15 +10,15 @@ package Classes;
  */
 public class Stats {
 
-    private int hp;
+    private int HP;
     private int strength;
     private int agility;
     private int speed;
     private int magic;
     private int manaPoints;
 
-    public Stats(int hp, int strength, int agility, int speed, int magic, int manaPoints) {
-        this.hp = hp;
+    public Stats(int HP, int strength, int agility, int speed, int magic, int manaPoints) {
+        this.HP = HP;
         this.strength = strength;
         this.agility = agility;
         this.speed = speed;
@@ -27,12 +27,12 @@ public class Stats {
     }
 
     //Getters and Setters
-    public int getHp() {
-        return hp;
+    public int getHP() {
+        return HP;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
+    public void setHp(int HP) {
+        this.HP = HP;
     }
 
     public int getStrength() {
