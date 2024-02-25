@@ -9,6 +9,7 @@ package Utils;
  * @author david
  */
 public class Functions {
+    
     public static int getRandom(){
         return (int) Math.random();
     }
@@ -19,5 +20,11 @@ public class Functions {
     
     public static String castIntToString(int num){
         return Integer.toString(num);
+    }
+    
+    public static int checkSuccess(int probability){
+        int randomInt = Functions.getRandomInt(0,100);
+        int value = (probability <= randomInt) ? 1 : 0;
+        return value;
     }
 }

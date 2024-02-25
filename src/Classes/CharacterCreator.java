@@ -4,6 +4,11 @@
  */
 package Classes;
 
+import Constants.Constants;
+import static Constants.Constants.QUALITY_ABILITIES_CHANCE;
+import static Constants.Constants.QUALITY_AGILITY_CHANCE;
+import static Constants.Constants.QUALITY_HP_CHANCE;
+import static Constants.Constants.QUALITY_STRENGTH_CHANCE;
 import Utils.Functions;
 
 /**
@@ -15,14 +20,29 @@ public class CharacterCreator {
     private Stats getStats() {
         return StatsCreator.createStats();
     }
+    
+    // We could use Weigthed Factors
+    private int calculatePriority(){
+        
+        int skillsQuality = Functions.checkSuccess(QUALITY_ABILITIES_CHANCE);
+        int hpQuality = Functions.checkSuccess(QUALITY_HP_CHANCE);
+        int strengthQuality = Functions.checkSuccess(QUALITY_STRENGTH_CHANCE);
+        int agilityQuality = Functions.checkSuccess(QUALITY_AGILITY_CHANCE);
+        
+        int overall = skillsQuality + hpQuality + strengthQuality + agilityQuality;
+        int[] priorities = {3,3,2,2,1};
+        int characterPriority = priorities[overall];
+        
+        return characterPriority;
+    }
 
     private Character createCharacter(int studioInt, int nextCharacterInt, String name) {
         String studio = Integer.toString(studioInt);
         String characterInt = Integer.toString(nextCharacterInt);
         String nameNoBlanks = name.replace(" ", "");
-        String id = studio + "-" + name + "-" + characterInt;
+        String id = studio + "-" + nameNoBlanks + "-" + characterInt;
         Stats stats = this.getStats();
-        int priority = Functions.getRandomInt(1, 3);
+        int priority = this.calculatePriority();
         return new Character(id, name, priority, stats);
     }
 
