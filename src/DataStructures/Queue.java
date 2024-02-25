@@ -76,7 +76,7 @@ public class Queue<T> {
         // Handling the case when the element is at the front of the queue
         if (element.equals(getHead().getData())) {
             Node<T> temp = getHead();
-            setHead(getHead().getNext());
+            setHead(temp.getNext());
             ;
             if (getHead() == null) {
                 setTail(null);

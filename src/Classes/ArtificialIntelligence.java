@@ -59,6 +59,10 @@ public class ArtificialIntelligence extends Thread {
 
                 getUserInterface().changeAIStatus("Picking Winner");
                 chooseWinner();
+
+                getNickelodeon().increaseStarvationCounters();
+                getCartoonNetwork().increaseStarvationCounters();
+
                 sleep(getProcessingSpeedInMS());
 
                 getReadyAI().release();

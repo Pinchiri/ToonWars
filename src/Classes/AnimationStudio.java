@@ -55,25 +55,21 @@ public class AnimationStudio {
     }
 
     public void increaseStarvationCounters() {
-        for (int i = 0; i < getSecondPriorityQueue().getSize() - 1; i++) {
+        for (int i = 0; i < getSecondPriorityQueue().getSize(); i++) {
             modifyCharacterPriority(i, 2);
 
         }
-
-        for (int i = 0; i < getThirdPriorityQueue().getSize() - 1; i++) {
+        for (int i = 0; i < getThirdPriorityQueue().getSize(); i++) {
             modifyCharacterPriority(i, 3);
 
         }
-
     }
 
     public void modifyCharacterPriority(int index, int queuePriorityLevel) {
         Queue<Character> queue = getQueueByPriorityLevel(queuePriorityLevel);
         Character character = queue.getElement(index);
-        character.increaseStarvationCounter();
 
         if (character.getStarvationCounter() == 8) {
-            character.setStarvationCounter(0);
             character.setPriorityLevel(queuePriorityLevel - 1);
 
             queue.removeElement(character);
@@ -81,7 +77,12 @@ public class AnimationStudio {
             Queue<Character> newQueue = getQueueByPriorityLevel(queuePriorityLevel - 1);
             newQueue.add(character);
 
+            character.setStarvationCounter(0);
+            updateQueuesUI();
+
         }
+        character.increaseStarvationCounter();
+
     }
 
     public void updateQueuesUI() {
@@ -147,7 +148,7 @@ public class AnimationStudio {
                 this.characters = this.characterCreator.createInitialCartoonCharacters();
         }
         this.characterCounter = 20;
-        for (int i = 0; i < this.characters.getSize() - 1; i++) {
+        for (int i = 0; i < this.characters.getSize(); i++) {
             Character character = this.characters.getElement(i);
             System.out.println(character.toString());
             this.addCharacter(character);

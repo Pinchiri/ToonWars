@@ -56,9 +56,6 @@ public class Administrator extends Thread {
                     continue;
                 }
 
-                getNickelodeon().increaseStarvationCounters();
-                getCartoonNetwork().increaseStarvationCounters();
-
                 if (cyclesCounter == 2) {
                     setCyclesCounter(0);
 
