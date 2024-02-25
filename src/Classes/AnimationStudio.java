@@ -131,6 +131,19 @@ public class AnimationStudio {
 
     }
 
+        
+    public void createRandomCharacter() {
+        Character randomCharacter = null;
+        switch (this.getStudioInt()) {
+            case 0 ->
+                randomCharacter = this.characterCreator.createRandomNickCharacter(++this.characterCounter);
+            case 1 ->
+                randomCharacter = this.characterCreator.createRandomCartoonCharacter(++this.characterCounter);
+        }
+        
+        this.addCharacter(randomCharacter);
+
+    }
 
     // Getters and Setters
     public int getStudioInt() {
