@@ -5,10 +5,8 @@
 package Classes;
 
 import static Constants.Constants.CARTOON_NETWORK_INT;
-import static Constants.Constants.CARTOON_NETWORK_STRING;
 import static Constants.Constants.NEW_CHARACTER_CHANCE;
 import static Constants.Constants.NICKELODEON_INT;
-import static Constants.Constants.NICKELODEON_STRING;
 import static Constants.Constants.ZERO_STATS;
 
 import java.util.Random;
@@ -22,8 +20,8 @@ import UserInterface.MainUI;
  */
 public class Administrator extends Thread {
 
-    private AnimationStudio Nickelodeon;
-    private AnimationStudio CartoonNetwork;
+    private AnimationStudio nickelodeon;
+    private AnimationStudio cartoonNetwork;
     private int cyclesCounter;
     private int newCharacterChance;
     private Semaphore synchronization;
@@ -32,9 +30,10 @@ public class Administrator extends Thread {
     private MainUI userInterface;
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
+            AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
             MainUI userInterface) {
-        this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING, userInterface);
-        this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING, userInterface);
+        this.nickelodeon = nickelodeon;
+        this.cartoonNetwork = cartoonNetwork;
         this.cyclesCounter = 0;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
         this.synchronization = synchronization;
@@ -73,11 +72,6 @@ public class Administrator extends Thread {
                     continue;
                 }
 
-                System.out.println(
-                        "Ya se escogieron los peleadores: "
-                                + getAI().getBattleOcurring().getFirstFighter().getName()
-                                + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
-
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
 
@@ -86,8 +80,9 @@ public class Administrator extends Thread {
 
                     Random random = new Random();
 
-                    if (random.nextInt(1, 101) < newCharacterChance) {
+                    if (random.nextInt(1, 100) < newCharacterChance) {
                         // TODO - Change when Add Character method is refactored
+
                     }
                 }
 
@@ -114,6 +109,7 @@ public class Administrator extends Thread {
             Battle battle = new Battle(firstFighter, secondFighter);
             getAI().setBattleOcurring(battle);
         } else {
+            updateCharactersUI(firstFighter, secondFighter);
             getAI().setBattleOcurring(null);
         }
 
@@ -135,7 +131,6 @@ public class Administrator extends Thread {
         } else {
             getUserInterface().changeCharacterStatsByStudio(getNickelodeon().getStudioInt(), ZERO_STATS, null);
             getUserInterface().changeCharacterStatsByStudio(getCartoonNetwork().getStudioInt(), ZERO_STATS, null);
-
         }
 
     }
@@ -153,19 +148,19 @@ public class Administrator extends Thread {
 
     // Getters and Setters
     public AnimationStudio getNickelodeon() {
-        return Nickelodeon;
+        return nickelodeon;
     }
 
     public void setNickelodeon(AnimationStudio Nickelodeon) {
-        this.Nickelodeon = Nickelodeon;
+        this.nickelodeon = Nickelodeon;
     }
 
     public AnimationStudio getCartoonNetwork() {
-        return CartoonNetwork;
+        return cartoonNetwork;
     }
 
     public void setCartoonNetwork(AnimationStudio CartoonNetwork) {
-        this.CartoonNetwork = CartoonNetwork;
+        this.cartoonNetwork = CartoonNetwork;
     }
 
     public int getCyclesCounter() {

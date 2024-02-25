@@ -5,8 +5,13 @@
 package UserInterface;
 
 import Classes.Administrator;
+import Classes.AnimationStudio;
 import Classes.ArtificialIntelligence;
 import Classes.Stats;
+import static Constants.Constants.CARTOON_NETWORK_INT;
+import static Constants.Constants.CARTOON_NETWORK_STRING;
+import static Constants.Constants.NICKELODEON_INT;
+import static Constants.Constants.NICKELODEON_STRING;
 import java.awt.Image;
 import java.util.concurrent.Semaphore;
 import javax.swing.ImageIcon;
@@ -20,6 +25,8 @@ public class MainUI extends javax.swing.JFrame {
 
     private ArtificialIntelligence AI;
     private Administrator admin;
+    private AnimationStudio nickelodeon;
+    private AnimationStudio cartoonNetwork;
 
     /**
      * Creates new form MainUI
@@ -32,15 +39,32 @@ public class MainUI extends javax.swing.JFrame {
         changeCharacterImage(0, "src/Assets/NickImages/logo-de-avatar-la-leyenda-de-aang-avatar.png");
         changeCharacterImage(1, "src/Assets/CartoonImages/logo-un-show-mas.png");
 
+        setNickelodeon(new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING, this));
+        setCartoonNetwork(new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING, this));
+
         Semaphore sync = new Semaphore(0);
         Semaphore readyAI = new Semaphore(0);
 
-        setAI(new ArtificialIntelligence(sync, readyAI, 1000, this));
-        setAdmin(new Administrator(sync, readyAI, getAI(), this));
+        setAI(new ArtificialIntelligence(sync, readyAI, 1000, getNickelodeon(), getCartoonNetwork(), this));
 
-        getAdmin().start();
+        setAdmin(new Administrator(sync, readyAI, getAI(), getNickelodeon(), getCartoonNetwork(), this));
+
         getAI().start();
+        getAdmin().start();
 
+    }
+
+    public void changeWinsCounterByStudio(int studioInt, int wins) {
+        switch (studioInt) {
+            case 0 -> {
+                winsCounterNick.setText(Integer.toString(wins));
+            }
+            case 1 -> {
+                winsCounterCartoon.setText(Integer.toString(wins));
+            }
+            default -> {
+            }
+        }
     }
 
     public void changeQueueByPriorityLevelAndStudio(int priorityLevel, int studioInt, String queueString) {
@@ -170,6 +194,7 @@ public class MainUI extends javax.swing.JFrame {
         };
     }
 
+    //Getters and Setters
     public ArtificialIntelligence getAI() {
         return AI;
     }
@@ -184,6 +209,22 @@ public class MainUI extends javax.swing.JFrame {
 
     public void setAdmin(Administrator admin) {
         this.admin = admin;
+    }
+
+    public AnimationStudio getNickelodeon() {
+        return nickelodeon;
+    }
+
+    public void setNickelodeon(AnimationStudio nickelodeon) {
+        this.nickelodeon = nickelodeon;
+    }
+
+    public AnimationStudio getCartoonNetwork() {
+        return cartoonNetwork;
+    }
+
+    public void setCartoonNetwork(AnimationStudio cartoonNetwork) {
+        this.cartoonNetwork = cartoonNetwork;
     }
 
     /**
@@ -229,6 +270,8 @@ public class MainUI extends javax.swing.JFrame {
         supportQueueCartoon = new javax.swing.JTextArea();
         statusAI = new javax.swing.JLabel();
         AI_label = new javax.swing.JLabel();
+        winsCartoon_label = new javax.swing.JLabel();
+        winsCounterCartoon = new javax.swing.JLabel();
         nickelodeonPanel = new javax.swing.JPanel();
         secondQueueNick_label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -259,6 +302,8 @@ public class MainUI extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         supportQueueNick = new javax.swing.JTextArea();
         supportQueueNick_label = new javax.swing.JLabel();
+        winsNick_label = new javax.swing.JLabel();
+        winsCounterNick = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -428,6 +473,16 @@ public class MainUI extends javax.swing.JFrame {
         AI_label.setText("AI:");
         cartoonNetworkPanel.add(AI_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 40, 30));
 
+        winsCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        winsCartoon_label.setForeground(new java.awt.Color(51, 51, 51));
+        winsCartoon_label.setText("Wins:");
+        cartoonNetworkPanel.add(winsCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 70, 30));
+
+        winsCounterCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        winsCounterCartoon.setForeground(new java.awt.Color(51, 51, 51));
+        winsCounterCartoon.setText("0");
+        cartoonNetworkPanel.add(winsCounterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, 70, 30));
+
         generalPanel.add(cartoonNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 600, 640));
 
         nickelodeonPanel.setBackground(new java.awt.Color(255, 153, 0));
@@ -574,6 +629,16 @@ public class MainUI extends javax.swing.JFrame {
         supportQueueNick_label.setText("Supports:");
         nickelodeonPanel.add(supportQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 110, 30));
 
+        winsNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        winsNick_label.setForeground(new java.awt.Color(51, 51, 51));
+        winsNick_label.setText("Wins:");
+        nickelodeonPanel.add(winsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, 70, 30));
+
+        winsCounterNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        winsCounterNick.setForeground(new java.awt.Color(51, 51, 51));
+        winsCounterNick.setText("0");
+        nickelodeonPanel.add(winsCounterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 70, 30));
+
         generalPanel.add(nickelodeonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 640));
 
         getContentPane().add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 640));
@@ -681,5 +746,9 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel topQueueCartoon_label;
     private javax.swing.JTextArea topQueueNick;
     private javax.swing.JLabel topQueueNick_label;
+    private javax.swing.JLabel winsCartoon_label;
+    private javax.swing.JLabel winsCounterCartoon;
+    private javax.swing.JLabel winsCounterNick;
+    private javax.swing.JLabel winsNick_label;
     // End of variables declaration//GEN-END:variables
 }

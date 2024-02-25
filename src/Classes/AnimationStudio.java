@@ -23,6 +23,7 @@ public class AnimationStudio {
     private Queue<Character> thirdPriorityQueue;
     private Queue<Character> supportQueue;
     private MainUI userInterface;
+    private int winsQty;
 
     public AnimationStudio(int studioInt, String studioName, MainUI userInterface) {
         this.studioInt = studioInt;
@@ -33,6 +34,7 @@ public class AnimationStudio {
         this.thirdPriorityQueue = new Queue<>();
         this.supportQueue = new Queue<>();
         this.userInterface = userInterface;
+        this.winsQty = 0;
     }
 
     public Character getNextFighter() {
@@ -188,4 +190,11 @@ public class AnimationStudio {
         return userInterface;
     }
 
+    public int getWinsQty() {
+        return winsQty;
+    }
+
+    public void setWinsQty(int winsQty) {
+        this.winsQty = winsQty;
+    }
 }
