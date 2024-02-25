@@ -15,8 +15,17 @@ public class Character {
     private int priorityLevel;
     private Stats stats;
     private int starvationCounter;
+    private String image;
 
     public Character(String id, String name, int priorityLevel, Stats stats) {
+        this.id = id;
+        this.name = name;
+        this.priorityLevel = priorityLevel;
+        this.stats = stats;
+        this.starvationCounter = 0;
+    }
+    
+    public Character(String id, String name, int priorityLevel, Stats stats, String image) {
         this.id = id;
         this.name = name;
         this.priorityLevel = priorityLevel;
