@@ -31,6 +31,7 @@ public class Character {
         this.priorityLevel = priorityLevel;
         this.stats = stats;
         this.starvationCounter = 0;
+        this.image = image;
     }
 
     public void increaseStarvationCounter() {
@@ -41,6 +42,16 @@ public class Character {
 
     public boolean isTopPriority() {
         return getPriorityLevel() == 1;
+    }
+    
+    @Override
+    public String toString(){
+        return 
+                "ID: " + this.id +"\n"+
+                "Name: " + this.name +"\n"+
+                "Priority: " + this.priorityLevel +"\n"+
+                "Image: " + this.image +"\n"
+                ;
     }
 
     // Getters and Setters
