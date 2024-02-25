@@ -4,9 +4,7 @@
  */
 package Classes;
 
-import static Constants.Constants.CARTOON_NETWORK_INT;
 import static Constants.Constants.NEW_CHARACTER_CHANCE;
-import static Constants.Constants.NICKELODEON_INT;
 import static Constants.Constants.ZERO_STATS;
 
 import java.util.Random;
@@ -28,7 +26,6 @@ public class Administrator extends Thread {
     private Semaphore readyAI;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
-    private int counter = 0;
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
             AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
@@ -47,27 +44,8 @@ public class Administrator extends Thread {
     public void run() {
         while (true) {
             try {
-
-                getSynchronization().acquire();
-                // TODO - Remove when implemented the correct initialization
-                counter++;
-
                 getUserInterface().changeAIStatus("Waiting");
                 sleep(100);
-
-                // TODO - Remove when implemented the correct initialization
-                if (getAI().getBattleOcurring() == null) {
-                    for (int i = 0; i < 20; i++) {
-                        Character newCharacter = new Character(
-                                getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
-                                "Eskere 1", 1, new Stats(100, 20, 15, 100, 1, 1));
-                        Character newCharacter2 = new Character(
-                                getCartoonNetwork().generateCharacterStringID(CARTOON_NETWORK_INT), "Eskere 2", 1,
-                                new Stats(150, 1, 1, 90, 50, 100));
-                        getNickelodeon().addCharacter(newCharacter);
-                        getCartoonNetwork().addCharacter(newCharacter2);
-                    }
-                }
 
                 updateUIValues();
                 chooseFighters();

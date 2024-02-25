@@ -68,6 +68,46 @@ public class Queue<T> {
         }
     }
 
+    public void removeElement(T element) {
+        if (isEmpty()) {
+            return; // Queue is empty, nothing to remove
+        }
+
+        // Handling the case when the element is at the front of the queue
+        if (element.equals(getHead().getData())) {
+            Node<T> temp = getHead();
+            setHead(getHead().getNext());
+            ;
+            if (getHead() == null) {
+                setTail(null);
+                ; // Queue becomes empty
+            }
+            size--;
+            return;
+        }
+
+        // Find the element in the queue
+        Node<T> current = getHead();
+        Node<T> prev = null;
+        while (current != null && !current.getData().equals(element)) {
+            prev = current;
+            current = current.getNext();
+        }
+
+        // Element not found
+        if (current == null) {
+            return;
+        }
+
+        // Remove the element
+        prev.setNext(current.getNext());
+        if (current.getNext() == null) {
+            // Removing the last element, update the tail
+            setTail(prev);
+        }
+        size--;
+    }
+
     /**
      * Obtiene el elemento de la Cola que se encuentra en el índice indicado
      *

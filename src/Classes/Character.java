@@ -17,14 +17,6 @@ public class Character {
     private int starvationCounter;
     private String image;
 
-    public Character(String ID, String name, int priorityLevel, Stats stats) {
-        this.ID = ID;
-        this.name = name;
-        this.priorityLevel = priorityLevel;
-        this.stats = stats;
-        this.starvationCounter = 0;
-    }
-    
     public Character(String id, String name, int priorityLevel, Stats stats, String image) {
         this.ID = id;
         this.name = name;
@@ -43,15 +35,13 @@ public class Character {
     public boolean isTopPriority() {
         return getPriorityLevel() == 1;
     }
-    
+
     @Override
-    public String toString(){
-        return 
-                "ID: " + this.ID +"\n"+
-                "Name: " + this.name +"\n"+
-                "Priority: " + this.priorityLevel +"\n"+
-                "Image: " + this.image +"\n"
-                ;
+    public String toString() {
+        return "ID: " + this.ID + "\n"
+                + "Name: " + this.name + "\n"
+                + "Priority: " + this.priorityLevel + "\n"
+                + "Image: " + this.image + "\n";
     }
 
     // Getters and Setters
@@ -95,4 +85,11 @@ public class Character {
         this.starvationCounter = starvationCounter;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

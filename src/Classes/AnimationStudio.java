@@ -17,7 +17,7 @@ public class AnimationStudio {
 
     private int studioInt;
     private String studioName;
-    private int characterCounter;   //used to generate charcaters ID
+    private int characterCounter; // used to generate charcaters ID
     private LinkedList<Character> characters;
     private Queue<Character> topPriorityQueue;
     private Queue<Character> secondPriorityQueue;
@@ -26,7 +26,6 @@ public class AnimationStudio {
     private CharacterCreator characterCreator;
     private MainUI userInterface;
     private int winsQty;
-
 
     public AnimationStudio(int studioInt, String studioName, MainUI userInterface) {
         this.studioInt = studioInt;
@@ -58,10 +57,12 @@ public class AnimationStudio {
     public void increaseStarvationCounters() {
         for (int i = 0; i < getSecondPriorityQueue().getSize() - 1; i++) {
             modifyCharacterPriority(i, 2);
+
         }
 
         for (int i = 0; i < getThirdPriorityQueue().getSize() - 1; i++) {
             modifyCharacterPriority(i, 3);
+
         }
 
     }
@@ -72,11 +73,12 @@ public class AnimationStudio {
         character.increaseStarvationCounter();
 
         if (character.getStarvationCounter() == 8) {
+            character.setStarvationCounter(0);
             character.setPriorityLevel(queuePriorityLevel - 1);
-            queue.remove();
 
             Queue<Character> newQueue = getQueueByPriorityLevel(queuePriorityLevel - 1);
             newQueue.add(character);
+
         }
     }
 
@@ -143,16 +145,14 @@ public class AnimationStudio {
                 this.characters = this.characterCreator.createInitialCartoonCharacters();
         }
         this.characterCounter = 20;
-        for (int i = 0; i < this.characters.getSize(); i++) {
+        for (int i = 0; i < this.characters.getSize() - 1; i++) {
             Character character = this.characters.getElement(i);
             System.out.println(character.toString());
             this.addCharacter(character);
         }
-        
 
     }
 
-        
     public void createRandomCharacter() {
         Character randomCharacter = null;
         switch (this.getStudioInt()) {
@@ -161,7 +161,7 @@ public class AnimationStudio {
             case 1 ->
                 randomCharacter = this.characterCreator.createRandomCartoonCharacter(++this.characterCounter);
         }
-        
+
         this.addCharacter(randomCharacter);
 
     }
@@ -223,7 +223,6 @@ public class AnimationStudio {
         this.supportQueue = supportQueue;
     }
 
-
     /**
      * @return the characterCounter
      */
@@ -251,10 +250,9 @@ public class AnimationStudio {
     public void setCharacterCreator(CharacterCreator characterCreator) {
         this.characterCreator = characterCreator;
     }
-    
+
     public MainUI getUserInterface() {
         return userInterface;
-
     }
 
     public int getWinsQty() {
