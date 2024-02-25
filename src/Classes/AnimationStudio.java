@@ -17,31 +17,37 @@ public class AnimationStudio {
 
     private int studioInt;
     private String studioName;
+    private int characterCounter;   //used to generate charcaters ID
     private LinkedList<Character> characters;
     private Queue<Character> topPriorityQueue;
     private Queue<Character> secondPriorityQueue;
     private Queue<Character> thirdPriorityQueue;
     private Queue<Character> supportQueue;
+    private CharacterCreator characterCreator;
     private MainUI userInterface;
+
 
     public AnimationStudio(int studioInt, String studioName, MainUI userInterface) {
         this.studioInt = studioInt;
         this.studioName = studioName;
+        this.characterCounter = 0;
         this.characters = new LinkedList<>();
         this.topPriorityQueue = new Queue<>();
         this.secondPriorityQueue = new Queue<>();
         this.thirdPriorityQueue = new Queue<>();
         this.supportQueue = new Queue<>();
+        this.characterCreator = new CharacterCreator();
+        this.createInitialCharacters();
         this.userInterface = userInterface;
     }
 
     public Character getNextFighter() {
         if (!topPriorityQueue.isEmpty()) {
-            return topPriorityQueue.dispatch();
+            return getTopPriorityQueue().dispatch();
         } else if (!secondPriorityQueue.isEmpty()) {
-            return secondPriorityQueue.dispatch();
+            return getSecondPriorityQueue().dispatch();
         } else if (!thirdPriorityQueue.isEmpty()) {
-            return thirdPriorityQueue.dispatch();
+            return getThirdPriorityQueue().dispatch();
         } else {
             return null;
         }
@@ -119,12 +125,43 @@ public class AnimationStudio {
     public void addCharacter(Character character) {
         // TODO - Refactor to Add random character to the Studio
         if (character.isTopPriority()) {
-            topPriorityQueue.add(character);
+            getTopPriorityQueue().add(character);
         } else if (character.getPriorityLevel() == 2) {
-            secondPriorityQueue.add(character);
+            getSecondPriorityQueue().add(character);
         } else if (character.getPriorityLevel() == 3) {
-            thirdPriorityQueue.add(character);
+            getThirdPriorityQueue().add(character);
         }
+    }
+
+    public void createInitialCharacters() {
+        switch (this.getStudioInt()) {
+            case 0 ->
+                this.characters = this.characterCreator.createInitialNickCharacters();
+            case 1 ->
+                this.characters = this.characterCreator.createInitialCartoonCharacters();
+        }
+        this.characterCounter = 20;
+        for (int i = 0; i < this.characters.getSize(); i++) {
+            Character character = this.characters.getElement(i);
+            System.out.println(character.toString());
+            this.addCharacter(character);
+        }
+        
+
+    }
+
+        
+    public void createRandomCharacter() {
+        Character randomCharacter = null;
+        switch (this.getStudioInt()) {
+            case 0 ->
+                randomCharacter = this.characterCreator.createRandomNickCharacter(++this.characterCounter);
+            case 1 ->
+                randomCharacter = this.characterCreator.createRandomCartoonCharacter(++this.characterCounter);
+        }
+        
+        this.addCharacter(randomCharacter);
+
     }
 
     // Getters and Setters
@@ -184,8 +221,38 @@ public class AnimationStudio {
         this.supportQueue = supportQueue;
     }
 
+
+    /**
+     * @return the characterCounter
+     */
+    public int getCharacterCounter() {
+        return characterCounter;
+    }
+
+    /**
+     * @param characterCounter the characterCounter to set
+     */
+    public void setCharacterCounter(int characterCounter) {
+        this.characterCounter = characterCounter;
+    }
+
+    /**
+     * @return the characterCreator
+     */
+    public CharacterCreator getCharacterCreator() {
+        return characterCreator;
+    }
+
+    /**
+     * @param characterCreator the characterCreator to set
+     */
+    public void setCharacterCreator(CharacterCreator characterCreator) {
+        this.characterCreator = characterCreator;
+    }
+    
     public MainUI getUserInterface() {
         return userInterface;
+
     }
 
 }
