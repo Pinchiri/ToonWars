@@ -7,6 +7,7 @@ package Classes;
 import static Classes.Main.NUMBER_ID;
 import DataStructures.LinkedList;
 import DataStructures.Queue;
+import UserInterface.MainUI;
 
 /**
  *
@@ -23,8 +24,10 @@ public class AnimationStudio {
     private Queue<Character> thirdPriorityQueue;
     private Queue<Character> supportQueue;
     private CharacterCreator characterCreator;
+    private MainUI userInterface;
 
-    public AnimationStudio(int studioInt, String studioName) {
+
+    public AnimationStudio(int studioInt, String studioName, MainUI userInterface) {
         this.studioInt = studioInt;
         this.studioName = studioName;
         this.characterCounter = 0;
@@ -35,6 +38,7 @@ public class AnimationStudio {
         this.supportQueue = new Queue<>();
         this.characterCreator = new CharacterCreator();
         this.createInitialCharacters();
+        this.userInterface = userInterface;
     }
 
     public Character getNextFighter() {
@@ -72,6 +76,20 @@ public class AnimationStudio {
             Queue<Character> newQueue = getQueueByPriorityLevel(queuePriorityLevel - 1);
             newQueue.add(character);
         }
+    }
+
+    public void updateQueuesUI() {
+        getUserInterface().changeQueueByPriorityLevelAndStudio(1, getStudioInt(),
+                getTopPriorityQueue().printQueue());
+
+        getUserInterface().changeQueueByPriorityLevelAndStudio(2, getStudioInt(),
+                getSecondPriorityQueue().printQueue());
+
+        getUserInterface().changeQueueByPriorityLevelAndStudio(3, getStudioInt(),
+                getThirdPriorityQueue().printQueue());
+
+        getUserInterface().changeQueueByPriorityLevelAndStudio(4, getStudioInt(),
+                getSupportQueue().printQueue());
     }
 
     public Queue<Character> getQueueByPriorityLevel(int priorityLevel) {
@@ -203,6 +221,7 @@ public class AnimationStudio {
         this.supportQueue = supportQueue;
     }
 
+
     /**
      * @return the characterCounter
      */
@@ -229,6 +248,11 @@ public class AnimationStudio {
      */
     public void setCharacterCreator(CharacterCreator characterCreator) {
         this.characterCreator = characterCreator;
+    }
+    
+    public MainUI getUserInterface() {
+        return userInterface;
+
     }
 
 }

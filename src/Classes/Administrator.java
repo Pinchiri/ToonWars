@@ -26,18 +26,21 @@ public class Administrator extends Thread {
     private int cyclesCounter;
     private int newCharacterChance;
     private Semaphore synchronization;
+    private Semaphore readyAI;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
     private int counter = 0;
 
-    public Administrator(Semaphore synchronization, ArtificialIntelligence AI, MainUI userInterface) {
-        this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING);
-        this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING);
+    public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
+            MainUI userInterface) {
+        this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING, userInterface);
+        this.CartoonNetwork = new AnimationStudio(CARTOON_NETWORK_INT, CARTOON_NETWORK_STRING, userInterface);
         this.cyclesCounter = 0;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
         this.synchronization = synchronization;
         this.AI = AI;
         this.userInterface = userInterface;
+        this.readyAI = readyAI;
     }
 
     @Override
@@ -48,6 +51,16 @@ public class Administrator extends Thread {
                 getSynchronization().acquire();
                 // TODO - Remove when implemented the correct initialization
                 counter++;
+
+                getUserInterface().changeAIStatus("Waiting");
+                sleep(100);
+
+                // TODO - Remove when implemented the correct initialization
+                if (getAI().getBattleOcurring() == null) {
+                    
+                }
+
+                updateUIValues();
                 chooseFighters();
 
                 if (getAI().getBattleOcurring() == null) {
@@ -60,6 +73,7 @@ public class Administrator extends Thread {
                         counter + " -- Ya se escogieron los peleadores: \n"
                         + getAI().getBattleOcurring().getFirstFighter().toString()
                         + " vs \n" + getAI().getBattleOcurring().getSecondFighter().toString());
+
 
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
@@ -75,7 +89,10 @@ public class Administrator extends Thread {
                 }
 
                 cyclesCounter++;
-                getUserInterface().changeAIStatus("Picking Winner");
+
+                getSynchronization().release();
+
+                getReadyAI().acquire();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -93,18 +110,12 @@ public class Administrator extends Thread {
             Battle battle = new Battle(firstFighter, secondFighter);
             getAI().setBattleOcurring(battle);
         }
-    }
-
-    public void updateUserInterfaceValues() {
 
     }
 
-    public void updateUserInterfaceQueues() {
-
-    }
-
-    public void updateUserInterfaceCharacters() {
-
+    public void updateUIValues() {
+        getNickelodeon().updateQueuesUI();
+        getCartoonNetwork().updateQueuesUI();
     }
 
     public AnimationStudio getStudioByStudioInt(int studioInt) {
@@ -165,5 +176,9 @@ public class Administrator extends Thread {
 
     public MainUI getUserInterface() {
         return userInterface;
+    }
+
+    public Semaphore getReadyAI() {
+        return readyAI;
     }
 }

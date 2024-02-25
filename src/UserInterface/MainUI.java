@@ -27,18 +27,91 @@ public class MainUI extends javax.swing.JFrame {
     public MainUI() {
         super("ToonWars");
         initComponents();
+        setLocationRelativeTo(null);
 
         changeCharacterImage(0, "src/Assets/NickImages/logo-de-avatar-la-leyenda-de-aang-avatar.png");
         changeCharacterImage(1, "src/Assets/CartoonImages/logo-un-show-mas.png");
 
         Semaphore sync = new Semaphore(0);
+        Semaphore readyAI = new Semaphore(0);
 
-        setAI(new ArtificialIntelligence(sync, this));
-        setAdmin(new Administrator(sync, getAI(), this));
+        setAI(new ArtificialIntelligence(sync, readyAI, 1000, this));
+        setAdmin(new Administrator(sync, readyAI, getAI(), this));
 
         getAdmin().start();
         getAI().start();
 
+    }
+
+    public void changeQueueByPriorityLevelAndStudio(int priorityLevel, int studioInt, String queueString) {
+        switch (priorityLevel) {
+            case 1 -> {
+                changeTopPriorityQueueByStudio(studioInt, queueString);
+            }
+            case 2 -> {
+                changeSecondPriorityQueueByStudio(studioInt, queueString);
+            }
+            case 3 -> {
+                changeThirdPriorityQueueByStudio(studioInt, queueString);
+            }
+            case 4 -> {
+                changeSupportPriorityQueueByStudio(studioInt, queueString);
+            }
+            default -> {
+            }
+        }
+    }
+
+    public void changeTopPriorityQueueByStudio(int studioInt, String queueString) {
+        switch (studioInt) {
+            case 0 -> {
+                topQueueNick.setText(queueString);
+            }
+            case 1 -> {
+                topQueueCartoon.setText(queueString);
+            }
+            default -> {
+            }
+        }
+    }
+
+    public void changeSecondPriorityQueueByStudio(int studioInt, String queueString) {
+        switch (studioInt) {
+            case 0 -> {
+                secondQueueNick.setText(queueString);
+            }
+            case 1 -> {
+                secondQueueCartoon.setText(queueString);
+            }
+            default -> {
+            }
+        }
+    }
+
+    public void changeThirdPriorityQueueByStudio(int studioInt, String queueString) {
+        switch (studioInt) {
+            case 0 -> {
+                thirdQueueNick.setText(queueString);
+            }
+            case 1 -> {
+                thirdQueueCartoon.setText(queueString);
+            }
+            default -> {
+            }
+        }
+    }
+
+    public void changeSupportPriorityQueueByStudio(int studioInt, String queueString) {
+        switch (studioInt) {
+            case 0 -> {
+                supportQueueNick.setText(queueString);
+            }
+            case 1 -> {
+                supportQueueCartoon.setText(queueString);
+            }
+            default -> {
+            }
+        }
     }
 
     public void changeCharacterStatsByStudio(int studioInt, Stats characterStats) {

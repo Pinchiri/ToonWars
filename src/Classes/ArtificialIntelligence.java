@@ -28,9 +28,12 @@ public class ArtificialIntelligence extends Thread {
     private LinkedList<Character> winners;
     private Battle battleOcurring;
     private Semaphore synchronization;
+    private Semaphore readyAI;
     private MainUI userInterface;
+    private int processingSpeedInMS;
 
-    public ArtificialIntelligence(Semaphore synchronization, MainUI userInterface) {
+    public ArtificialIntelligence(Semaphore synchronization, Semaphore readyAI, int processingSpeedInMS,
+            MainUI userInterface) {
         this.firstFighter = null;
         this.secondFighter = null;
         this.winRate = WIN_RATE;
@@ -40,19 +43,22 @@ public class ArtificialIntelligence extends Thread {
         this.battleOcurring = null;
         this.synchronization = synchronization;
         this.userInterface = userInterface;
+        this.readyAI = readyAI;
+        this.processingSpeedInMS = processingSpeedInMS;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                getUserInterface().changeAIStatus("Waiting");
-                sleep(100);
 
+                getSynchronization().acquire();
+
+                getUserInterface().changeAIStatus("Picking Winner");
                 chooseWinner();
-                getSynchronization().release();
+                sleep(getProcessingSpeedInMS());
 
-                sleep(1000);
+                getReadyAI().release();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -157,5 +163,17 @@ public class ArtificialIntelligence extends Thread {
 
     public MainUI getUserInterface() {
         return userInterface;
+    }
+
+    public Semaphore getReadyAI() {
+        return readyAI;
+    }
+
+    public int getProcessingSpeedInMS() {
+        return processingSpeedInMS;
+    }
+
+    public void setProcessingSpeedInMS(int processingSpeedInMS) {
+        this.processingSpeedInMS = processingSpeedInMS;
     }
 }
