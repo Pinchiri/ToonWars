@@ -125,6 +125,7 @@ public class AnimationStudio {
         this.characterCounter = 20;
         for (int i = 0; i < this.characters.getSize(); i++) {
             Character character = this.characters.getElement(i);
+            System.out.println(character.toString());
             this.addCharacter(character);
         }
         

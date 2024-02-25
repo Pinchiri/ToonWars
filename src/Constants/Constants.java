@@ -46,7 +46,8 @@ public class Constants {
                     "Pakku",
                     "Ghazan",
                     "Suyin Beifong",
-                    "Ming-Hua"
+                    "Ming-Hua",
+                    "Azula"
                 };
     public static final String[] NICKELODEON_CHARACTER_IMAGES
                 = {
@@ -68,7 +69,8 @@ public class Constants {
                     "src/Assets/NickImages/Pakku.png",
                     "src/Assets/NickImages/Ghazan.png",
                     "src/Assets/NickImages/SuyinBeifong.png",
-                    "src/Assets/NickImages/Ming-Hua.png"
+                    "src/Assets/NickImages/Ming-Hua.png",
+                    "src/Assets/NickImages/Azula.png"
                 };
    
 

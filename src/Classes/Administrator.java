@@ -28,6 +28,7 @@ public class Administrator extends Thread {
     private Semaphore synchronization;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
+    private int counter = 0;
 
     public Administrator(Semaphore synchronization, ArtificialIntelligence AI, MainUI userInterface) {
         this.Nickelodeon = new AnimationStudio(NICKELODEON_INT, NICKELODEON_STRING);
@@ -46,16 +47,7 @@ public class Administrator extends Thread {
 
                 getSynchronization().acquire();
                 // TODO - Remove when implemented the correct initialization
-                Character newCharacter = new Character(getNickelodeon().generateCharacterStringID(NICKELODEON_INT),
-                        "Eskere 1", 1, new Stats(1, 1, 1, 1, 1, 1));
-                Character newCharacter2 = new Character(
-                        getCartoonNetwork().generateCharacterStringID(CARTOON_NETWORK_INT), "Eskere 2", 1,
-                        new Stats(1, 1, 1, 1, 1, 1));
-
-                // TODO - Remove when implemented the correct initialization
-                getNickelodeon().addCharacter(newCharacter);
-                getCartoonNetwork().addCharacter(newCharacter2);
-
+                counter++;
                 chooseFighters();
 
                 if (getAI().getBattleOcurring() == null) {
@@ -65,9 +57,9 @@ public class Administrator extends Thread {
                 }
 
                 System.out.println(
-                        "Ya se escogieron los peleadores: "
-                        + getAI().getBattleOcurring().getFirstFighter().getName()
-                        + " vs " + getAI().getBattleOcurring().getSecondFighter().getName());
+                        counter + " -- Ya se escogieron los peleadores: \n"
+                        + getAI().getBattleOcurring().getFirstFighter().toString()
+                        + " vs \n" + getAI().getBattleOcurring().getSecondFighter().toString());
 
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
