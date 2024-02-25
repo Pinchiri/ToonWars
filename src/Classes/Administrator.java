@@ -28,6 +28,7 @@ public class Administrator extends Thread {
     private Semaphore readyAI;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
+    private int counter = 0;
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
             AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
@@ -46,6 +47,11 @@ public class Administrator extends Thread {
     public void run() {
         while (true) {
             try {
+
+                getSynchronization().acquire();
+                // TODO - Remove when implemented the correct initialization
+                counter++;
+
                 getUserInterface().changeAIStatus("Waiting");
                 sleep(100);
 
