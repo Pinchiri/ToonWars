@@ -76,6 +76,8 @@ public class AnimationStudio {
             character.setStarvationCounter(0);
             character.setPriorityLevel(queuePriorityLevel - 1);
 
+            queue.removeElement(character);
+
             Queue<Character> newQueue = getQueueByPriorityLevel(queuePriorityLevel - 1);
             newQueue.add(character);
 
