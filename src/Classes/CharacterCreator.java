@@ -60,7 +60,7 @@ public class CharacterCreator {
         int randomInt = Functions.getRandomInt(0, 19);
         String characterName = characterNames[randomInt];
         String characterImage = characterImages[randomInt];
-        character = this.createCharacter(NICKELODEON_INT, nextCharacterInt, characterName, characterImage);
+        character = createCharacter(NICKELODEON_INT, nextCharacterInt, characterName, characterImage);
         return character;
     }
     
