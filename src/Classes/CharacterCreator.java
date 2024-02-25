@@ -91,4 +91,21 @@ public class CharacterCreator {
         return charactersList;
     }
     
+    public LinkedList<Character> createInitialCartoonCharacters(){
+        LinkedList<Character> charactersList = new LinkedList<>();
+        String[] characterNames = CARTOON_NETWORK_CHARACTER_NAMES;
+        String[] characterImages = CARTOON_NETWORK_CHARACTER_IMAGES;
+        Character character = null;
+        String characterName = null;
+        String characterImage = null;
+        for (int i = 0; i < characterNames.length; i++) {
+            characterName = characterNames[i];
+            characterImage = characterImages[i];
+            character = createCharacter(CARTOON_NETWORK_INT, i+1, characterName, characterImage);
+            charactersList.addLast(character);
+        }
+        return charactersList;
+    }
+    
+
 }
