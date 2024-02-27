@@ -169,11 +169,14 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     public void changeCharacterImage(int studioInt, String characterImagePath) {
-        ImageIcon characterResizedImage = resizeIcon(new ImageIcon(characterImagePath),
-                getCharacterImageByStudio(studioInt).getWidth(),
-                getCharacterImageByStudio(studioInt).getHeight());
+        try {
+            ImageIcon characterResizedImage = resizeIcon(new ImageIcon(characterImagePath),
+                    getCharacterImageByStudio(studioInt).getWidth(),
+                    getCharacterImageByStudio(studioInt).getHeight());
 
-        getCharacterImageByStudio(studioInt).setIcon(characterResizedImage);
+            getCharacterImageByStudio(studioInt).setIcon(characterResizedImage);
+        } catch (Exception e) {
+        }
 
     }
 

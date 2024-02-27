@@ -28,59 +28,55 @@ public class Constants {
     // Nickelodeon
     public static final int NICKELODEON_INT = 0;
     public static final String NICKELODEON_STRING = "Nickelodeon";
-    public static final String[] NICKELODEON_CHARACTER_NAMES
-                = {
-                    "Aang",
-                    "Ozai",
-                    "Avatar Roku",
-                    "Avatar Kyoshi",
-                    "Toph Beifong",
-                    "Iroh",
-                    "Zuko",
-                    "Katara",
-                    "Korra",
-                    "Zaheer",
-                    "Sozin",
-                    "Combustion Man",
-                    "Kuvira",
-                    "King Bumi",
-                    "Jeong Jeong",
-                    "Pakku",
-                    "Ghazan",
-                    "Suyin Beifong",
-                    "Ming-Hua",
-                    "Azula"
-                };
-    public static final String[] NICKELODEON_CHARACTER_IMAGES
-                = {
-                    "src/Assets/NickImages/Aang.png",
-                    "src/Assets/NickImages/Ozai.png",
-                    "src/Assets/NickImages/AvatarRoku.png",
-                    "src/Assets/NickImages/AvatarKyoshi.png",
-                    "src/Assets/NickImages/TophBeifong.png",
-                    "src/Assets/NickImages/Iroh.png",
-                    "src/Assets/NickImages/Zuko.png",
-                    "src/Assets/NickImages/Katara.png",
-                    "src/Assets/NickImages/Korra.png",
-                    "src/Assets/NickImages/Zaheer.png",
-                    "src/Assets/NickImages/Sozin.png",
-                    "src/Assets/NickImages/CombustionMan.png",
-                    "src/Assets/NickImages/Kuvira.png",
-                    "src/Assets/NickImages/KingBumi.png",
-                    "src/Assets/NickImages/JeongJeong.png",
-                    "src/Assets/NickImages/Pakku.png",
-                    "src/Assets/NickImages/Ghazan.png",
-                    "src/Assets/NickImages/SuyinBeifong.png",
-                    "src/Assets/NickImages/Ming-Hua.png",
-                    "src/Assets/NickImages/Azula.png"
-                };
-   
+    public static final String[] NICKELODEON_CHARACTER_NAMES = {
+            "Aang",
+            "Ozai",
+            "Avatar Roku",
+            "Avatar Kyoshi",
+            "Toph Beifong",
+            "Iroh",
+            "Zuko",
+            "Katara",
+            "Korra",
+            "Zaheer",
+            "Sozin",
+            "Combustion Man",
+            "Kuvira",
+            "King Bumi",
+            "Jeong Jeong",
+            "Pakku",
+            "Ghazan",
+            "Suyin Beifong",
+            "Ming-Hua",
+            "Azula"
+    };
+    public static final String[] NICKELODEON_CHARACTER_IMAGES = {
+            "src/Assets/NickImages/Aang.png",
+            "src/Assets/NickImages/Ozai.png",
+            "src/Assets/NickImages/AvatarRoku.png",
+            "src/Assets/NickImages/AvatarKyoshi.png",
+            "src/Assets/NickImages/TophBeifong.png",
+            "src/Assets/NickImages/Iroh.png",
+            "src/Assets/NickImages/Zuko.png",
+            "src/Assets/NickImages/Katara.png",
+            "src/Assets/NickImages/Korra.png",
+            "src/Assets/NickImages/Zaheer.png",
+            "src/Assets/NickImages/Sozin.png",
+            "src/Assets/NickImages/CombustionMan.png",
+            "src/Assets/NickImages/Kuvira.png",
+            "src/Assets/NickImages/KingBumi.png",
+            "src/Assets/NickImages/JeongJeong.png",
+            "src/Assets/NickImages/Pakku.png",
+            "src/Assets/NickImages/Ghazan.png",
+            "src/Assets/NickImages/SuyinBeifong.png",
+            "src/Assets/NickImages/Ming-Hua.png",
+            "src/Assets/NickImages/Azula.png"
+    };
 
     // Cartoon Network
     public static final int CARTOON_NETWORK_INT = 1;
     public static final String CARTOON_NETWORK_STRING = "Cartoon Network";
-    public static final String[] CARTOON_NETWORK_CHARACTER_NAMES
-        = {
+    public static final String[] CARTOON_NETWORK_CHARACTER_NAMES = {
             "Mordecai",
             "Rigby",
             "Muscle Man",
@@ -101,10 +97,9 @@ public class Constants {
             "CJ",
             "Party Pete",
             "Doug Shablowski"
-        };
+    };
 
-public static final String[] CARTOON_NETWORK_CHARACTER_IMAGES
-        = {
+    public static final String[] CARTOON_NETWORK_CHARACTER_IMAGES = {
             "src/Assets/CartoonImages/Mordecai.png",
             "src/Assets/CartoonImages/Rigby.png",
             "src/Assets/CartoonImages/MuscleMan.png",
@@ -125,8 +120,7 @@ public static final String[] CARTOON_NETWORK_CHARACTER_IMAGES
             "src/Assets/CartoonImages/CJ.png",
             "src/Assets/CartoonImages/PartyPete.png",
             "src/Assets/CartoonImages/DougShablowski.png"
-        };
-
+    };
 
     // Stats when Null
     public static final Stats ZERO_STATS = new Stats();
