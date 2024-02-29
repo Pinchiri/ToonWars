@@ -109,9 +109,17 @@ public class Administrator extends Thread {
             getUserInterface().changeCharacterStatsByStudio(getCartoonNetwork().getStudioInt(),
                     secondFighter.getStats(),
                     secondFighter.getID());
+
+            getUserInterface().changeCharacterImage(getNickelodeon().getStudioInt(), firstFighter.getImage());
+            getUserInterface().changeCharacterImage(getCartoonNetwork().getStudioInt(), secondFighter.getImage());
         } else {
             getUserInterface().changeCharacterStatsByStudio(getNickelodeon().getStudioInt(), ZERO_STATS, null);
             getUserInterface().changeCharacterStatsByStudio(getCartoonNetwork().getStudioInt(), ZERO_STATS, null);
+
+            getUserInterface().changeCharacterImage(getNickelodeon().getStudioInt(),
+                    "src/Assets/NickImages/logo-de-avatar-la-leyenda-de-aang-avatar.png");
+            getUserInterface().changeCharacterImage(getCartoonNetwork().getStudioInt(),
+                    "src/Assets/CartoonImages/logo-un-show-mas.png");
         }
 
     }
