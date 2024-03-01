@@ -59,6 +59,7 @@ public class ArtificialIntelligence extends Thread {
 
                 getUserInterface().changeAIStatus("Picking Winner");
                 chooseWinner();
+                updateUIValues();
 
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
@@ -82,13 +83,17 @@ public class ArtificialIntelligence extends Thread {
             if (randomResult <= getDrawRate()) {
                 System.out.println("Empate");
                 getBattleOcurring().setResult(1);
+                handleDraw();
             } else if (randomResult > getDrawRate() && randomResult <= getDrawRate() + getNonCombatRate()) {
                 System.out.println("No hubo combate");
                 getBattleOcurring().setResult(2);
+                // handleNoCombat
+                // both fighter to support queue and modify priority???
             } else if (randomResult > getDrawRate() + getNonCombatRate()
                     && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
                 determineWinner(random);
             }
+            
         }
     }
 
@@ -114,7 +119,28 @@ public class ArtificialIntelligence extends Thread {
                 getBattleOcurring().setResult(0);
                 getBattleOcurring().setWinner(getSecondFighter());
             }
+            String winnerName = getBattleOcurring().getWinner().getName();
+            System.out.println("Winner: " + winnerName);
         }
+    }
+
+    public void handleDraw() {
+        if (getFirstFighter() != null && getSecondFighter() != null) {
+            Character nickFighter = this.getFirstFighter();
+            nickFighter.setPriorityLevel(1);
+            this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
+
+            Character cartoonFighter = this.getSecondFighter();
+            cartoonFighter.setPriorityLevel(1);
+            this.getCartoonNetwork().getTopPriorityQueue().add(cartoonFighter);
+            getBattleOcurring().setResult(1);
+        }
+    }
+    
+    public void updateUIValues() {
+        getNickelodeon().updateQueuesUI();
+        getCartoonNetwork().updateQueuesUI();
+
     }
 
     // Getters and Setters

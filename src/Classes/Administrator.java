@@ -26,9 +26,10 @@ public class Administrator extends Thread {
     private Semaphore readyAI;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
+    private int processingSpeedInMS;
 
-    public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
-            AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
+    public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI, 
+            int processingSpeedInMS, AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
             MainUI userInterface) {
         this.nickelodeon = nickelodeon;
         this.cartoonNetwork = cartoonNetwork;
@@ -38,6 +39,7 @@ public class Administrator extends Thread {
         this.AI = AI;
         this.userInterface = userInterface;
         this.readyAI = readyAI;
+        this.processingSpeedInMS = processingSpeedInMS;
     }
 
     @Override
@@ -45,14 +47,15 @@ public class Administrator extends Thread {
         while (true) {
             try {
                 getUserInterface().changeAIStatus("Waiting");
-                sleep(100);
+                sleep(1000);
 
                 updateUIValues();
                 chooseFighters();
+                updateUIValues();
 
                 if (getAI().getBattleOcurring() == null) {
                     System.out.println("No hay peleadores disponibles");
-                    sleep(2000);
+                    sleep(this.getProcessingSpeedInMS());
                     continue;
                 }
 
@@ -63,6 +66,7 @@ public class Administrator extends Thread {
 
                     if (random.nextInt(1, 100) < newCharacterChance) {
                         // TODO - Change when Add Character method is refactored
+                        
 
                     }
                 }
@@ -186,5 +190,19 @@ public class Administrator extends Thread {
 
     public Semaphore getReadyAI() {
         return readyAI;
+    }
+
+    /**
+     * @return the workingSpeed
+     */
+    public int getProcessingSpeedInMS() {
+        return processingSpeedInMS;
+    }
+
+    /**
+     * @param processingSpeedInMS the workingSpeed to set
+     */
+    public void setProcessingSpeedInMS(int processingSpeedInMS) {
+        this.processingSpeedInMS = processingSpeedInMS;
     }
 }
