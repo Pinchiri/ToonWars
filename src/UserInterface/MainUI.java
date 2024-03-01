@@ -44,7 +44,7 @@ public class MainUI extends javax.swing.JFrame {
 
         Semaphore sync = new Semaphore(0);
         Semaphore readyAI = new Semaphore(0);
-        int processingSpeedInMS = 1000;
+        int processingSpeedInMS = 10000;
         setAI(new ArtificialIntelligence(sync, readyAI, processingSpeedInMS, getNickelodeon(), getCartoonNetwork(), this));
 
         setAdmin(new Administrator(sync, readyAI, getAI(), processingSpeedInMS, getNickelodeon(), getCartoonNetwork(), this));

@@ -5,6 +5,7 @@
 package Classes;
 
 import static Constants.Constants.NEW_CHARACTER_CHANCE;
+import static Constants.Constants.OUT_OF_SUPPORT_CHANCE;
 import static Constants.Constants.ZERO_STATS;
 
 import java.util.Random;
@@ -27,6 +28,8 @@ public class Administrator extends Thread {
     private ArtificialIntelligence AI;
     private MainUI userInterface;
     private int processingSpeedInMS;
+    private int outOfSupportChance;
+    
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
             int processingSpeedInMS, AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
@@ -35,6 +38,7 @@ public class Administrator extends Thread {
         this.cartoonNetwork = cartoonNetwork;
         this.cyclesCounter = 1;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
+        this.outOfSupportChance = OUT_OF_SUPPORT_CHANCE;
         this.synchronization = synchronization;
         this.AI = AI;
         this.userInterface = userInterface;
@@ -61,6 +65,8 @@ public class Administrator extends Thread {
 
                 Random random = new Random();
                 if ((cyclesCounter % 3 == 0) && (random.nextInt(1, 100) < newCharacterChance)) {
+                    createNewCharacters();
+                    updateUIValues();
 
                 }
                 getAI().setRound(cyclesCounter);
@@ -70,7 +76,10 @@ public class Administrator extends Thread {
                 getSynchronization().release();
 
                 getReadyAI().acquire();
+
                 handleBattleResults(getAI().getBattleOcurring());
+                updateUIValues();
+                askForSupport(random);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -149,6 +158,11 @@ public class Administrator extends Thread {
 
     }
 
+    public void createNewCharacters() {
+        this.getNickelodeon().createRandomCharacter();
+        this.getCartoonNetwork().createRandomCharacter();
+    }
+
     public void handleWin(Battle battleOcurring) {
 
     }
@@ -158,7 +172,7 @@ public class Administrator extends Thread {
         Character nickFighter = battleOcurring.getFirstFighter();
         Character cartoonFighter = battleOcurring.getSecondFighter();
         if (nickFighter != null && cartoonFighter != null) {
-            
+
             nickFighter.setPriorityLevel(1);
             this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
 
@@ -173,8 +187,33 @@ public class Administrator extends Thread {
         Character cartoonFighter = battleOcurring.getSecondFighter();
         if (nickFighter != null && cartoonFighter != null) {
             this.getNickelodeon().getSupportQueue().add(nickFighter);
-            
+
             this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
+        }
+    }
+    
+    public void askForSupport(Random random){
+        int randomInt = random.nextInt(1, 100);
+        Character nickFighter = this.getNickelodeon().getSupportQueue().dispatch();
+        Character cartoonFighter = this.getCartoonNetwork().getSupportQueue().dispatch();
+        
+        if (nickFighter == null || cartoonFighter == null){
+            return;
+        }
+        if (randomInt <= this.getOutOfSupportChance()){
+            nickFighter.setPriorityLevel(1);
+            this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
+            cartoonFighter.setPriorityLevel(1);
+            this.getCartoonNetwork().getTopPriorityQueue().add(cartoonFighter);
+            System.out.println("\nOut of Nicks support Queue--->"+nickFighter.getID());
+            System.out.println("\nOut of Cartoons support Queue--->"+cartoonFighter.getID());
+            System.out.println("");
+        }else{
+            this.getNickelodeon().getSupportQueue().add(nickFighter);
+            this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
+             System.out.println("\nBack to Nicks support Queue--->"+nickFighter.getID());
+            System.out.println("\nBack to Cartoons support Queue--->"+cartoonFighter.getID());
+            System.out.println("");
         }
     }
 
@@ -243,5 +282,19 @@ public class Administrator extends Thread {
      */
     public void setProcessingSpeedInMS(int processingSpeedInMS) {
         this.processingSpeedInMS = processingSpeedInMS;
+    }
+
+    /**
+     * @return the outOfSupportChance
+     */
+    public int getOutOfSupportChance() {
+        return outOfSupportChance;
+    }
+
+    /**
+     * @param outOfSupportChance the outOfSupportChance to set
+     */
+    public void setOutOfSupportChance(int outOfSupportChance) {
+        this.outOfSupportChance = outOfSupportChance;
     }
 }

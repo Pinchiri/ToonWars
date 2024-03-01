@@ -140,7 +140,7 @@ public class AnimationStudio {
         }
     }
 
-    public void createInitialCharacters() {
+    private void createInitialCharacters() {
         switch (this.getStudioInt()) {
             case 0 ->
                 this.characters = this.characterCreator.createInitialNickCharacters();
@@ -166,6 +166,8 @@ public class AnimationStudio {
         }
 
         this.addCharacter(randomCharacter);
+        String newCharacterString = "\n***New " + this.getStudioName()+" Character***\n" + randomCharacter.toString();
+        System.out.println(newCharacterString);
 
     }
 

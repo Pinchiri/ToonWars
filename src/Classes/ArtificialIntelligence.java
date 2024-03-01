@@ -60,7 +60,7 @@ public class ArtificialIntelligence extends Thread {
 
                 getUserInterface().changeAIStatus("Picking Winner");
                 chooseWinner();
-                updateUIValues();
+                updateUIValues(); // UI Updates must be done by Admin
 
                 getNickelodeon().increaseStarvationCounters();
                 getCartoonNetwork().increaseStarvationCounters();
