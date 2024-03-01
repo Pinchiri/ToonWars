@@ -29,7 +29,6 @@ public class Administrator extends Thread {
     private MainUI userInterface;
     private int processingSpeedInMS;
     private int outOfSupportChance;
-    
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
             int processingSpeedInMS, AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
@@ -51,11 +50,13 @@ public class Administrator extends Thread {
         while (true) {
             try {
                 getUserInterface().changeAIStatus("Waiting");
-                sleep(1000);
-
+                sleep(500);
                 updateUIValues();
+
                 chooseFighters();
                 updateUIValues();
+
+                
 
                 if (getAI().getBattleOcurring() == null) {
                     System.out.println("No hay peleadores disponibles");
@@ -63,23 +64,26 @@ public class Administrator extends Thread {
                     continue;
                 }
 
-                Random random = new Random();
-                if ((cyclesCounter % 3 == 0) && (random.nextInt(1, 100) < newCharacterChance)) {
-                    createNewCharacters();
-                    updateUIValues();
-
-                }
                 getAI().setRound(cyclesCounter);
-
-                cyclesCounter++;
 
                 getSynchronization().release();
 
                 getReadyAI().acquire();
+                
+                avoidStarvation();
+                updateUIValues();
 
                 handleBattleResults(getAI().getBattleOcurring());
                 updateUIValues();
+
+                Random random = new Random();
                 askForSupport(random);
+                
+                this.evaluateIfNewCharacters(random);
+
+                cyclesCounter++;
+                updateUIValues();
+                printBothStudiosQueues();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -101,14 +105,31 @@ public class Administrator extends Thread {
             updateCharactersUI(firstFighter, secondFighter);
             getAI().setBattleOcurring(null);
         }
-        getAI();
+        getAI(); // ???
 
+    }
+
+    public void avoidStarvation() {
+        getNickelodeon().increaseStarvationCounters();
+        getCartoonNetwork().increaseStarvationCounters();
+    }
+
+    public void evaluateIfNewCharacters(Random random) {
+        if ((cyclesCounter % 2 == 0) && (random.nextInt(1, 100) < newCharacterChance)) {
+            createNewCharacters();
+            updateUIValues();
+        }
     }
 
     public void updateUIValues() {
         getNickelodeon().updateQueuesUI();
         getCartoonNetwork().updateQueuesUI();
 
+    }
+    
+    public void printBothStudiosQueues(){
+        getNickelodeon().printQueues();
+        getCartoonNetwork().printQueues();
     }
 
     public void updateCharactersUI(Character firstFighter, Character secondFighter) {
@@ -164,7 +185,7 @@ public class Administrator extends Thread {
     }
 
     public void handleWin(Battle battleOcurring) {
-
+        // Add winner to winner list should be done by this method
     }
 
     public void handleDraw(Battle battleOcurring) {
@@ -191,28 +212,28 @@ public class Administrator extends Thread {
             this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
         }
     }
-    
-    public void askForSupport(Random random){
+
+    public void askForSupport(Random random) {
         int randomInt = random.nextInt(1, 100);
         Character nickFighter = this.getNickelodeon().getSupportQueue().dispatch();
         Character cartoonFighter = this.getCartoonNetwork().getSupportQueue().dispatch();
-        
-        if (nickFighter == null || cartoonFighter == null){
+
+        if (nickFighter == null || cartoonFighter == null) {
             return;
         }
-        if (randomInt <= this.getOutOfSupportChance()){
+        if (randomInt <= this.getOutOfSupportChance()) {
             nickFighter.setPriorityLevel(1);
             this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
             cartoonFighter.setPriorityLevel(1);
             this.getCartoonNetwork().getTopPriorityQueue().add(cartoonFighter);
-            System.out.println("\nOut of Nicks support Queue--->"+nickFighter.getID());
-            System.out.println("\nOut of Cartoons support Queue--->"+cartoonFighter.getID());
+            System.out.println("\nOut of Nicks support Queue--->" + nickFighter.getID());
+            System.out.println("\nOut of Cartoons support Queue--->" + cartoonFighter.getID());
             System.out.println("");
-        }else{
+        } else {
             this.getNickelodeon().getSupportQueue().add(nickFighter);
             this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
-             System.out.println("\nBack to Nicks support Queue--->"+nickFighter.getID());
-            System.out.println("\nBack to Cartoons support Queue--->"+cartoonFighter.getID());
+            System.out.println("\nBack to Nicks support Queue--->" + nickFighter.getID());
+            System.out.println("\nBack to Cartoons support Queue--->" + cartoonFighter.getID());
             System.out.println("");
         }
     }
