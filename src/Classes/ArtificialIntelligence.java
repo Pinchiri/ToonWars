@@ -124,24 +124,13 @@ public class ArtificialIntelligence extends Thread {
 
     public void handleDraw() {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            Character nickFighter = this.getFirstFighter();
-            nickFighter.setPriorityLevel(1);
-            this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
-
-            Character cartoonFighter = this.getSecondFighter();
-            cartoonFighter.setPriorityLevel(1);
-            this.getCartoonNetwork().getTopPriorityQueue().add(cartoonFighter);
+            
             getBattleOcurring().setResult(1);
         }
     }
 
     public void handleNoCombat() {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            Character nickFighter = this.getFirstFighter();
-            this.getNickelodeon().getSupportQueue().add(nickFighter);
-
-            Character cartoonFighter = this.getSecondFighter();
-            this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
 
             getBattleOcurring().setResult(2);
         }
