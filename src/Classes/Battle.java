@@ -21,6 +21,27 @@ public class Battle {
         this.result = -1;
         this.winner = null;
     }
+    
+    public String toString(){
+        String firstName = (this.getFirstFighter() == null) ?  "-" :this.getFirstFighter().getName();
+        String secondName = (this.getSecondFighter() == null) ?  "-" :this.getSecondFighter().getName();
+        
+        String resultString="";
+        
+        switch(this.getResult()){
+            case -1 ->
+                resultString = "---";
+            case 0 ->
+                resultString = "Winner: " + this.winner.getName();
+            case 1 ->
+                resultString = "Draw";
+            case 2 ->
+                resultString = "No Combat";
+        }
+        String fight = "F1: " + firstName + "  vs  "+ " F2: "+ secondName;
+        return fight +"\n" + resultString;
+        
+    }
 
     // Getters and Setters
     public Character getFirstFighter() {
