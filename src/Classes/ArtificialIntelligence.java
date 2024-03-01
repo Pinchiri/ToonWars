@@ -81,19 +81,17 @@ public class ArtificialIntelligence extends Thread {
             int randomResult = random.nextInt(1, 100);
 
             if (randomResult <= getDrawRate()) {
-                System.out.println("Empate");
                 getBattleOcurring().setResult(1);
                 handleDraw();
             } else if (randomResult > getDrawRate() && randomResult <= getDrawRate() + getNonCombatRate()) {
-                System.out.println("No hubo combate");
                 getBattleOcurring().setResult(2);
-                // handleNoCombat
-                // both fighter to support queue and modify priority???
+                handleNoCombat();
             } else if (randomResult > getDrawRate() + getNonCombatRate()
                     && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
                 determineWinner(random);
             }
-            
+            System.out.println(getBattleOcurring().toString() + "\n");
+
         }
     }
 
@@ -119,8 +117,6 @@ public class ArtificialIntelligence extends Thread {
                 getBattleOcurring().setResult(0);
                 getBattleOcurring().setWinner(getSecondFighter());
             }
-            String winnerName = getBattleOcurring().getWinner().getName();
-            System.out.println("Winner: " + winnerName);
         }
     }
 
@@ -136,7 +132,19 @@ public class ArtificialIntelligence extends Thread {
             getBattleOcurring().setResult(1);
         }
     }
-    
+
+    public void handleNoCombat() {
+        if (getFirstFighter() != null && getSecondFighter() != null) {
+            Character nickFighter = this.getFirstFighter();
+            this.getNickelodeon().getSupportQueue().add(nickFighter);
+
+            Character cartoonFighter = this.getSecondFighter();
+            this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
+
+            getBattleOcurring().setResult(2);
+        }
+    }
+
     public void updateUIValues() {
         getNickelodeon().updateQueuesUI();
         getCartoonNetwork().updateQueuesUI();
