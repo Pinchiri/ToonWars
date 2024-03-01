@@ -60,10 +60,7 @@ public class ArtificialIntelligence extends Thread {
 
                 getUserInterface().changeAIStatus("Picking Winner");
                 chooseWinner();
-                updateUIValues(); // UI Updates must be done by Admin
-
-                getNickelodeon().increaseStarvationCounters();
-                getCartoonNetwork().increaseStarvationCounters();
+                updateUIValues(); // UI Updates should be done by Admin
 
                 sleep(getProcessingSpeedInMS());
 
@@ -124,14 +121,12 @@ public class ArtificialIntelligence extends Thread {
 
     public void handleDraw() {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            
             getBattleOcurring().setResult(1);
         }
     }
 
     public void handleNoCombat() {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-
             getBattleOcurring().setResult(2);
         }
     }
