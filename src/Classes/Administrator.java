@@ -33,7 +33,7 @@ public class Administrator extends Thread {
             MainUI userInterface) {
         this.nickelodeon = nickelodeon;
         this.cartoonNetwork = cartoonNetwork;
-        this.cyclesCounter = 0;
+        this.cyclesCounter = 1;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
         this.synchronization = synchronization;
         this.AI = AI;
@@ -59,17 +59,16 @@ public class Administrator extends Thread {
                     continue;
                 }
 
-                if (cyclesCounter == 2) {
-                    setCyclesCounter(0);
+                Random random = new Random();
+                if ( (cyclesCounter % 3 == 0) && (random.nextInt(1, 100) < newCharacterChance) ) {
+                    
 
-                    Random random = new Random();
-
-                    if (random.nextInt(1, 100) < newCharacterChance) {
-                        // TODO - Change when Add Character method is refactored
+                    
                         
 
-                    }
+                    
                 }
+                getAI().setRound(cyclesCounter);
 
                 cyclesCounter++;
 
@@ -97,6 +96,7 @@ public class Administrator extends Thread {
             updateCharactersUI(firstFighter, secondFighter);
             getAI().setBattleOcurring(null);
         }
+        getAI();
 
     }
 

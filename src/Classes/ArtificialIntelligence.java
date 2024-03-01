@@ -33,6 +33,7 @@ public class ArtificialIntelligence extends Thread {
     private int processingSpeedInMS;
     private AnimationStudio nickelodeon;
     private AnimationStudio cartoonNetwork;
+    private int round = 1;
 
     public ArtificialIntelligence(Semaphore synchronization, Semaphore readyAI, int processingSpeedInMS,
             AnimationStudio nickelodeon, AnimationStudio cartoonNetwork, MainUI userInterface) {
@@ -90,6 +91,7 @@ public class ArtificialIntelligence extends Thread {
                     && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
                 determineWinner(random);
             }
+            System.out.println("-------"+"Round-"+getRound()+"-------");
             System.out.println(getBattleOcurring().toString() + "\n");
 
         }
@@ -234,5 +236,19 @@ public class ArtificialIntelligence extends Thread {
 
     public AnimationStudio getCartoonNetwork() {
         return cartoonNetwork;
+    }
+
+    /**
+     * @return the round
+     */
+    public int getRound() {
+        return round;
+    }
+
+    /**
+     * @param round the round to set
+     */
+    public void setRound(int round) {
+        this.round = round;
     }
 }
