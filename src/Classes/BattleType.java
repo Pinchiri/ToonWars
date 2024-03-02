@@ -11,11 +11,13 @@ package Classes;
 public class BattleType {
 
     private int type; // 0: Normal Battle, 1:Resistance battle, 2: Agility Battle
+    private String typeString;
     private float[] weights; // weights[0]:HP  weights[1]:strength weights[2]:agility weights[3]:speed weights[4]:magic weights[5]:manaPoints
 
     public BattleType(int type) {
         this.type = type;
         this.weights = this.chooseWeightsByType();
+        this.typeString = this.chooseTypeString();
     }
 
     private float[] chooseWeightsByType() {
@@ -35,6 +37,27 @@ public class BattleType {
             }
         }
         return typeBattleArray;
+
+    }
+    
+    private String chooseTypeString () {
+        String typeBattleString = "";
+        switch (this.type) {
+            case 0 -> {
+                String normalBattleString = "Normal";
+                typeBattleString = normalBattleString;
+            }
+            case 1 -> {
+                String resistanceBattleString = "Resistance";
+                typeBattleString = resistanceBattleString;
+            }
+            case 2 -> {
+                String agilityBattleString = "Agility";
+                typeBattleString = agilityBattleString;
+            }
+
+        }
+        return typeBattleString;
 
     }
 
@@ -64,6 +87,20 @@ public class BattleType {
      */
     public void setWeights(float[] weights) {
         this.weights = weights;
+    }
+
+    /**
+     * @return the typeString
+     */
+    public String getTypeString() {
+        return typeString;
+    }
+
+    /**
+     * @param typeString the typeString to set
+     */
+    public void setTypeString(String typeString) {
+        this.typeString = typeString;
     }
 
 }

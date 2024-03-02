@@ -30,17 +30,9 @@ public class Battle {
         String firstName = (this.getFirstFighter() == null) ?  "-" :this.getFirstFighter().getName();
         String secondName = (this.getSecondFighter() == null) ?  "-" :this.getSecondFighter().getName();
         
-        String resultString="";
-        
-        switch(this.getResult()){
-            case -1 ->
-                resultString = "---";
-            case 0 ->
-                resultString = "Winner: " + this.winner.getName();
-            case 1 ->
-                resultString = "Draw";
-            case 2 ->
-                resultString = "No Combat";
+        String resultString=this.getResultString();
+        if(this.getResult() == 0){
+            resultString +=": " + this.winner.getName();
         }
         String fight = "F1: " + firstName + "  vs  "+ " F2: "+ secondName;
         return fight +"\n" + resultString;
@@ -51,6 +43,22 @@ public class Battle {
         Random random = new Random();
         int n = random.nextInt(0, 3);
         return  new BattleType(n);
+    }
+    
+    public String getResultString(){
+        String resultString="";
+        
+        switch(this.getResult()){
+            case -1 ->
+                resultString = "---";
+            case 0 ->
+                resultString = "Winner"  ;
+            case 1 ->
+                resultString = "Draw";
+            case 2 ->
+                resultString = "No Combat";
+        }
+        return resultString;
     }
 
     // Getters and Setters
