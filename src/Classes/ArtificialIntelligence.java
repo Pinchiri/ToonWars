@@ -96,7 +96,7 @@ public class ArtificialIntelligence extends Thread {
 
     public void determineWinner(Random random) {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            int pickWinner = random.nextInt(1, 3);
+            int pickWinner = this.pickWinner(random);
             if (pickWinner == 1) {
                 getWinners().addLast(getFirstFighter());
 
@@ -117,6 +117,31 @@ public class ArtificialIntelligence extends Thread {
                 getBattleOcurring().setWinner(getSecondFighter());
             }
         }
+    }
+    
+    public int pickWinner(Random random){
+        float [] typeBattleArray = this.getBattleOcurring().getBattleType().getWeights();
+        
+        float [] nickFighterStats = this.getFirstFighter().statsToArray();
+        float nickFighterOverall = 0;
+        
+        float [] cartoonFighterStats = this.getSecondFighter().statsToArray();
+        float cartoonFighterOverall = 0;
+        
+        for (int i = 0; i < typeBattleArray.length; i++) {
+            nickFighterOverall += typeBattleArray[i] + nickFighterStats[i];
+            cartoonFighterOverall += typeBattleArray[i] + cartoonFighterStats[i];
+        }
+        
+        int winner;
+        if(nickFighterOverall > cartoonFighterOverall){
+            winner = 1;
+        }else if(nickFighterOverall < cartoonFighterOverall){
+            winner = 2;
+        }else{
+            winner = random.nextInt(1, 3);
+        }
+        return winner;     
     }
 
     public void handleDraw() {

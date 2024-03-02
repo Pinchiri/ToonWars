@@ -44,6 +44,18 @@ public class Character {
                 + "Image: " + this.image + "\n";
     }
 
+    public float[] statsToArray() {
+        float HP = (float) this.getStats().getHP();
+        float strength = (float) this.getStats().getStrength();
+        float agility = (float) this.getStats().getAgility();
+        float speed = (float) this.getStats().getSpeed();
+        float magic = (float) this.getStats().getMagic();
+        float manaPoints = (float) this.getStats().getManaPoints();
+
+        float[] statsArray = {HP, strength, agility, speed, magic, manaPoints};
+        return statsArray;
+    }
+
     // Getters and Setters
     public String getID() {
         return ID;
