@@ -96,8 +96,8 @@ public class ArtificialIntelligence extends Thread {
 
     public void determineWinner(Random random) {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            int pickWinner = this.pickWinner(random);
-            if (pickWinner == 1) {
+            int pickedWinner = this.pickWinner(random);
+            if (pickedWinner == 1) {
                 getWinners().addLast(getFirstFighter());
 
                 getNickelodeon().setWinsQty(getNickelodeon().getWinsQty() + 1);
