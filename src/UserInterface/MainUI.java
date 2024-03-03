@@ -45,7 +45,7 @@ public class MainUI extends javax.swing.JFrame {
 
         Semaphore sync = new Semaphore(0);
         Semaphore readyAI = new Semaphore(0);
-        int processingSpeedInMS = (int) this.speed.getValue()*1000;
+        int processingSpeedInMS = (int) this.speed.getValue() * 1000;
         setAI(new ArtificialIntelligence(sync, readyAI, processingSpeedInMS, getNickelodeon(), getCartoonNetwork(), this));
 
         setAdmin(new Administrator(sync, readyAI, getAI(), processingSpeedInMS, getNickelodeon(), getCartoonNetwork(), this));
@@ -197,23 +197,24 @@ public class MainUI extends javax.swing.JFrame {
                 null;
         };
     }
-    
-    public void setCartoonWinner(){
+
+    public void setCartoonWinner() {
         this.cartoonWinner.setText("Winner");
     }
-    
-    public void setNickWinner(){
+
+    public void setNickWinner() {
         this.nickWinner.setText("Winner");
     }
-    public void clearCartoonWinner(){
+
+    public void clearCartoonWinner() {
         this.cartoonWinner.setText("");
     }
-    
-    public void clearNickWinner(){
+
+    public void clearNickWinner() {
         this.nickWinner.setText("");
     }
-    
-    public void changeResult(String result){
+
+    public void changeResult(String result) {
         this.result.setText(result);
     }
 
@@ -249,14 +250,16 @@ public class MainUI extends javax.swing.JFrame {
     public void setCartoonNetwork(AnimationStudio cartoonNetwork) {
         this.cartoonNetwork = cartoonNetwork;
     }
-    
-    public JSpinner getUISpeedSpinner(){
+
+    public JSpinner getUISpeedSpinner() {
         return this.speed;
     }
-    public void changeRound(int roundInt){
+
+    public void changeRound(int roundInt) {
         this.round.setText(Integer.toString(roundInt));
     }
-    public void changeBattleType(String battleType){
+
+    public void changeBattleType(String battleType) {
         this.battleType.setText(battleType);
     }
 
@@ -542,7 +545,7 @@ public class MainUI extends javax.swing.JFrame {
         cartoonNetworkPanel.add(result, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 150, 30));
 
         cartoonWinner.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        cartoonWinner.setForeground(new java.awt.Color(51, 51, 51));
+        cartoonWinner.setForeground(new java.awt.Color(102, 204, 0));
         cartoonNetworkPanel.add(cartoonWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 100, 30));
 
         generalPanel.add(cartoonNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 590, 640));
@@ -727,7 +730,7 @@ public class MainUI extends javax.swing.JFrame {
         nickelodeonPanel.add(AI_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 40, 30));
 
         nickWinner.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        nickWinner.setForeground(new java.awt.Color(51, 51, 51));
+        nickWinner.setForeground(new java.awt.Color(102, 204, 0));
         nickelodeonPanel.add(nickWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 130, 30));
 
         generalPanel.add(nickelodeonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 640));
