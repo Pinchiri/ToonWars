@@ -50,14 +50,12 @@ public class Administrator extends Thread {
         while (true) {
             try {
                 this.updateProcesingSpeedFromSpinner();
-                
-                getUserInterface().changeAIStatus("Waiting");
-                getUserInterface().changeBattleType(""); 
-                getUserInterface().changeResult(""); 
+
+                this.resetInterface();
                 sleep(500);
-                
+
                 updateUIValues();
-                
+
                 this.getUserInterface().changeRound(this.cyclesCounter);
                 chooseFighters();
                 updateUIValues();
@@ -93,6 +91,14 @@ public class Administrator extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void resetInterface() {
+        getUserInterface().changeAIStatus("Waiting");
+        getUserInterface().changeBattleType("");
+        getUserInterface().changeResult("");
+        this.getUserInterface().clearNickWinner();
+        this.getUserInterface().clearCartoonWinner();
     }
 
     public void chooseFighters() {
