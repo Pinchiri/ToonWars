@@ -199,11 +199,11 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     public void setCartoonWinner() {
-        this.cartoonWinner.setText("Winner");
+        this.cartoonWinner.setText("Winner!");
     }
 
     public void setNickWinner() {
-        this.nickWinner.setText("Winner");
+        this.nickWinner.setText("Winner!");
     }
 
     public void clearCartoonWinner() {
@@ -557,7 +557,7 @@ public class MainUI extends javax.swing.JFrame {
         secondQueueNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         secondQueueNick_label.setForeground(new java.awt.Color(255, 255, 255));
         secondQueueNick_label.setText("Second Priority:");
-        nickelodeonPanel.add(secondQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 30));
+        nickelodeonPanel.add(secondQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 110, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -648,7 +648,7 @@ public class MainUI extends javax.swing.JFrame {
         topQueueNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         topQueueNick_label.setForeground(new java.awt.Color(255, 255, 255));
         topQueueNick_label.setText("Top Priority:");
-        nickelodeonPanel.add(topQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 110, 30));
+        nickelodeonPanel.add(topQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 110, 30));
 
         secondQueueNick.setBackground(new java.awt.Color(255, 255, 255));
         secondQueueNick.setColumns(20);
@@ -656,7 +656,7 @@ public class MainUI extends javax.swing.JFrame {
         secondQueueNick.setBorder(null);
         jScrollPane1.setViewportView(secondQueueNick);
 
-        nickelodeonPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 260, 80));
+        nickelodeonPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, 50));
 
         topQueueNick.setBackground(new java.awt.Color(255, 255, 255));
         topQueueNick.setColumns(20);
@@ -664,13 +664,13 @@ public class MainUI extends javax.swing.JFrame {
         topQueueNick.setBorder(null);
         jScrollPane2.setViewportView(topQueueNick);
 
-        nickelodeonPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 260, 80));
+        nickelodeonPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 260, 50));
 
         thirdQueueNick_label.setBackground(new java.awt.Color(0, 0, 0));
         thirdQueueNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         thirdQueueNick_label.setForeground(new java.awt.Color(255, 255, 255));
         thirdQueueNick_label.setText("Third Priority:");
-        nickelodeonPanel.add(thirdQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 110, 30));
+        nickelodeonPanel.add(thirdQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 110, 30));
 
         thirdQueueNick.setBackground(new java.awt.Color(255, 255, 255));
         thirdQueueNick.setColumns(20);
@@ -678,7 +678,7 @@ public class MainUI extends javax.swing.JFrame {
         thirdQueueNick.setBorder(null);
         jScrollPane3.setViewportView(thirdQueueNick);
 
-        nickelodeonPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 260, 80));
+        nickelodeonPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 260, 50));
 
         supportQueueNick.setBackground(new java.awt.Color(255, 255, 255));
         supportQueueNick.setColumns(20);
@@ -686,23 +686,23 @@ public class MainUI extends javax.swing.JFrame {
         supportQueueNick.setBorder(null);
         jScrollPane4.setViewportView(supportQueueNick);
 
-        nickelodeonPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 260, 80));
+        nickelodeonPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 260, 50));
 
         supportQueueNick_label.setBackground(new java.awt.Color(0, 0, 0));
         supportQueueNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         supportQueueNick_label.setForeground(new java.awt.Color(255, 255, 255));
         supportQueueNick_label.setText("Supports:");
-        nickelodeonPanel.add(supportQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 110, 30));
+        nickelodeonPanel.add(supportQueueNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 110, 30));
 
         winsNick_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         winsNick_label.setForeground(new java.awt.Color(51, 51, 51));
         winsNick_label.setText("Wins:");
-        nickelodeonPanel.add(winsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 70, 30));
+        nickelodeonPanel.add(winsNick_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 70, 30));
 
         winsCounterNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         winsCounterNick.setForeground(new java.awt.Color(51, 51, 51));
         winsCounterNick.setText("0");
-        nickelodeonPanel.add(winsCounterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 70, 30));
+        nickelodeonPanel.add(winsCounterNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 70, 30));
 
         result_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         result_label.setForeground(new java.awt.Color(51, 51, 51));
