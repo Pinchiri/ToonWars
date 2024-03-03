@@ -49,14 +49,16 @@ public class Administrator extends Thread {
     public void run() {
         while (true) {
             try {
-                getUserInterface().changeAIStatus("Waiting");
+                this.updateProcesingSpeedFromSpinner();
+
+                this.resetInterface();
                 sleep(500);
+
                 updateUIValues();
 
+                this.getUserInterface().changeRound(this.cyclesCounter);
                 chooseFighters();
                 updateUIValues();
-
-                
 
                 if (getAI().getBattleOcurring() == null) {
                     System.out.println("No hay peleadores disponibles");
@@ -69,7 +71,7 @@ public class Administrator extends Thread {
                 getSynchronization().release();
 
                 getReadyAI().acquire();
-                
+
                 avoidStarvation();
                 updateUIValues();
 
@@ -78,7 +80,7 @@ public class Administrator extends Thread {
 
                 Random random = new Random();
                 askForSupport(random);
-                
+
                 this.evaluateIfNewCharacters(random);
 
                 cyclesCounter++;
@@ -89,6 +91,14 @@ public class Administrator extends Thread {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void resetInterface() {
+        getUserInterface().changeAIStatus("Waiting");
+        getUserInterface().changeBattleType("");
+        getUserInterface().changeResult("");
+        this.getUserInterface().clearNickWinner();
+        this.getUserInterface().clearCartoonWinner();
     }
 
     public void chooseFighters() {
@@ -126,8 +136,8 @@ public class Administrator extends Thread {
         getCartoonNetwork().updateQueuesUI();
 
     }
-    
-    public void printBothStudiosQueues(){
+
+    public void printBothStudiosQueues() {
         getNickelodeon().printQueues();
         getCartoonNetwork().printQueues();
     }
@@ -236,6 +246,11 @@ public class Administrator extends Thread {
             System.out.println("\nBack to Cartoons support Queue--->" + cartoonFighter.getID());
             System.out.println("");
         }
+    }
+
+    public void updateProcesingSpeedFromSpinner() {
+        int newSpeed = (int) this.getUserInterface().getUISpeedSpinner().getValue() * 1000;
+        this.setProcessingSpeedInMS(newSpeed);
     }
 
     // Getters and Setters

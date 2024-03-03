@@ -57,12 +57,16 @@ public class ArtificialIntelligence extends Thread {
         while (true) {
             try {
                 getSynchronization().acquire();
+                this.updateProcesingSpeedFromSpinner();
 
-                getUserInterface().changeAIStatus("Picking Winner");
+                getUserInterface().changeAIStatus("Processing...");
+                getUserInterface().changeBattleType(this.getBattleOcurring().getBattleType().getTypeString());
+                sleep(getProcessingSpeedInMS() / 2);
+
                 chooseWinner();
+                getUserInterface().changeAIStatus("Done!");
                 updateUIValues(); // UI Updates should be done by Admin
-
-                sleep(getProcessingSpeedInMS());
+                sleep(getProcessingSpeedInMS() / 2);
 
                 getReadyAI().release();
 
@@ -88,24 +92,28 @@ public class ArtificialIntelligence extends Thread {
                     && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
                 determineWinner(random);
             }
-            System.out.println("-------"+"Round-"+getRound()+"-------");
+            System.out.println("-------" + "Round-" + getRound() + "-------");
             System.out.println(getBattleOcurring().toString() + "\n");
+            this.getUserInterface().changeResult(getBattleOcurring().getResultString());
 
         }
     }
 
     public void determineWinner(Random random) {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            int pickWinner = random.nextInt(1, 3);
-            if (pickWinner == 1) {
+
+            int pickedWinner = this.pickWinner(random);
+            if (pickedWinner == 1) {
                 getWinners().addLast(getFirstFighter());
 
                 getNickelodeon().setWinsQty(getNickelodeon().getWinsQty() + 1);
                 getUserInterface().changeWinsCounterByStudio(getNickelodeon().getStudioInt(),
                         getNickelodeon().getWinsQty());
 
+                this.getUserInterface().setNickWinner();
                 getBattleOcurring().setResult(0);
                 getBattleOcurring().setWinner(getFirstFighter());
+
             } else {
                 getWinners().addLast(getSecondFighter());
 
@@ -113,10 +121,36 @@ public class ArtificialIntelligence extends Thread {
                 getUserInterface().changeWinsCounterByStudio(getCartoonNetwork().getStudioInt(),
                         getCartoonNetwork().getWinsQty());
 
+                this.getUserInterface().setCartoonWinner();
                 getBattleOcurring().setResult(0);
                 getBattleOcurring().setWinner(getSecondFighter());
             }
         }
+    }
+
+    public int pickWinner(Random random) {
+        float[] typeBattleArray = this.getBattleOcurring().getBattleType().getWeights();
+
+        float[] nickFighterStats = this.getFirstFighter().statsToArray();
+        float nickFighterOverall = 0;
+
+        float[] cartoonFighterStats = this.getSecondFighter().statsToArray();
+        float cartoonFighterOverall = 0;
+
+        for (int i = 0; i < typeBattleArray.length; i++) {
+            nickFighterOverall += typeBattleArray[i] + nickFighterStats[i];
+            cartoonFighterOverall += typeBattleArray[i] + cartoonFighterStats[i];
+        }
+
+        int winner;
+        if (nickFighterOverall > cartoonFighterOverall) {
+            winner = 1;
+        } else if (nickFighterOverall < cartoonFighterOverall) {
+            winner = 2;
+        } else {
+            winner = random.nextInt(1, 3);
+        }
+        return winner;
     }
 
     public void handleDraw() {
@@ -135,6 +169,11 @@ public class ArtificialIntelligence extends Thread {
         getNickelodeon().updateQueuesUI();
         getCartoonNetwork().updateQueuesUI();
 
+    }
+
+    public void updateProcesingSpeedFromSpinner() {
+        int newSpeed = (int) this.getUserInterface().getUISpeedSpinner().getValue() * 1000;
+        this.setProcessingSpeedInMS(newSpeed);
     }
 
     // Getters and Setters
