@@ -114,13 +114,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="0" green="be" red="be" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="180" y="300" width="54" height="23"/>
+                      <AbsoluteConstraints x="180" y="300" width="54" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -130,7 +130,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="0" green="99" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="AG:"/>
                   </Properties>
@@ -146,7 +146,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MP:"/>
                   </Properties>
@@ -184,13 +184,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="180" y="330" width="54" height="23"/>
+                      <AbsoluteConstraints x="180" y="330" width="54" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -216,7 +216,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="0" green="be" red="be" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="SP:"/>
                   </Properties>
@@ -232,13 +232,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="0" green="cc" red="99" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="70" y="270" width="54" height="23"/>
+                      <AbsoluteConstraints x="70" y="270" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -248,13 +248,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="0" green="cc" red="99" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="HP:"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="270" width="29" height="-1"/>
+                      <AbsoluteConstraints x="20" y="270" width="29" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -264,13 +264,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="ff" green="66" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="70" y="330" width="54" height="23"/>
+                      <AbsoluteConstraints x="70" y="330" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -280,13 +280,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="180" y="270" width="54" height="23"/>
+                      <AbsoluteConstraints x="180" y="270" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -296,7 +296,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ST:"/>
                   </Properties>
@@ -334,13 +334,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="0" green="99" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="70" y="300" width="54" height="23"/>
+                      <AbsoluteConstraints x="70" y="300" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -350,13 +350,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+                      <Color blue="ff" green="66" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MG:"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="20" y="330" width="35" height="-1"/>
+                      <AbsoluteConstraints x="20" y="330" width="35" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -789,7 +789,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="0" green="cc" red="99" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="HP:"/>
                   </Properties>
@@ -805,13 +805,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="0" green="cc" red="99" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="69" y="273" width="54" height="23"/>
+                      <AbsoluteConstraints x="69" y="273" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -827,7 +827,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="69" y="302" width="54" height="23"/>
+                      <AbsoluteConstraints x="69" y="302" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -853,13 +853,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="176" y="273" width="54" height="23"/>
+                      <AbsoluteConstraints x="176" y="273" width="54" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -869,7 +869,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="33" green="33" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="ST:"/>
                   </Properties>
@@ -885,13 +885,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="0" green="be" red="be" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="176" y="302" width="54" height="23"/>
+                      <AbsoluteConstraints x="176" y="302" width="54" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -901,7 +901,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="0" green="be" red="be" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="SP:"/>
                   </Properties>
@@ -917,13 +917,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="66" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="69" y="331" width="54" height="23"/>
+                      <AbsoluteConstraints x="69" y="331" width="54" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -933,7 +933,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="66" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MG:"/>
                   </Properties>
@@ -949,7 +949,7 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MP:"/>
                   </Properties>
@@ -965,13 +965,13 @@
                       <Font name="Microsoft YaHei" size="14" style="1"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="99" red="ff" type="rgb"/>
+                      <Color blue="ff" green="99" red="33" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="176" y="331" width="54" height="23"/>
+                      <AbsoluteConstraints x="176" y="331" width="54" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
