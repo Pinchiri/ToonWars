@@ -364,14 +364,14 @@ public class MainUI extends javax.swing.JFrame {
         cartoonNetworkPanel_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
         cartoonNetworkPanel_title.setForeground(new java.awt.Color(51, 51, 51));
         cartoonNetworkPanel_title.setText("CARTOON");
-        cartoonNetworkPanel.add(cartoonNetworkPanel_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 200, 60));
+        cartoonNetworkPanel.add(cartoonNetworkPanel_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 200, 60));
 
         networkPanel_title.setBackground(new java.awt.Color(51, 51, 51));
         networkPanel_title.setForeground(new java.awt.Color(255, 255, 255));
         networkPanel_title.setText("NETWORK");
         networkPanel_title.setFocusable(false);
         networkPanel_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
-        cartoonNetworkPanel.add(networkPanel_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 210, 60));
+        cartoonNetworkPanel.add(networkPanel_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 210, 60));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -457,7 +457,7 @@ public class MainUI extends javax.swing.JFrame {
         secondQueueCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         secondQueueCartoon_label.setForeground(new java.awt.Color(51, 51, 51));
         secondQueueCartoon_label.setText("Second Priority:");
-        cartoonNetworkPanel.add(secondQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 130, 30));
+        cartoonNetworkPanel.add(secondQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 130, 30));
 
         secondQueueCartoon.setBackground(new java.awt.Color(255, 255, 255));
         secondQueueCartoon.setColumns(20);
@@ -465,7 +465,7 @@ public class MainUI extends javax.swing.JFrame {
         secondQueueCartoon.setBorder(null);
         jScrollPane6.setViewportView(secondQueueCartoon);
 
-        cartoonNetworkPanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 260, 80));
+        cartoonNetworkPanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 260, 50));
 
         topQueueCartoon.setBackground(new java.awt.Color(255, 255, 255));
         topQueueCartoon.setColumns(20);
@@ -473,19 +473,19 @@ public class MainUI extends javax.swing.JFrame {
         topQueueCartoon.setBorder(null);
         jScrollPane5.setViewportView(topQueueCartoon);
 
-        cartoonNetworkPanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 260, 80));
+        cartoonNetworkPanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 260, 50));
 
         topQueueCartoon_label.setBackground(new java.awt.Color(0, 0, 0));
         topQueueCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         topQueueCartoon_label.setForeground(new java.awt.Color(51, 51, 51));
         topQueueCartoon_label.setText("Top Priority:");
-        cartoonNetworkPanel.add(topQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 110, 30));
+        cartoonNetworkPanel.add(topQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 110, 30));
 
         supportQueueCartoon_label.setBackground(new java.awt.Color(0, 0, 0));
         supportQueueCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         supportQueueCartoon_label.setForeground(new java.awt.Color(51, 51, 51));
         supportQueueCartoon_label.setText("Supports:");
-        cartoonNetworkPanel.add(supportQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, 80, 30));
+        cartoonNetworkPanel.add(supportQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 80, 30));
 
         thirdQueueCartoon.setBackground(new java.awt.Color(255, 255, 255));
         thirdQueueCartoon.setColumns(20);
@@ -493,13 +493,13 @@ public class MainUI extends javax.swing.JFrame {
         thirdQueueCartoon.setBorder(null);
         jScrollPane7.setViewportView(thirdQueueCartoon);
 
-        cartoonNetworkPanel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 260, 80));
+        cartoonNetworkPanel.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 260, 50));
 
         thirdQueueCartoon_label.setBackground(new java.awt.Color(0, 0, 0));
         thirdQueueCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         thirdQueueCartoon_label.setForeground(new java.awt.Color(51, 51, 51));
         thirdQueueCartoon_label.setText("Third Priority:");
-        cartoonNetworkPanel.add(thirdQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 110, 30));
+        cartoonNetworkPanel.add(thirdQueueCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 110, 30));
 
         supportQueueCartoon.setBackground(new java.awt.Color(255, 255, 255));
         supportQueueCartoon.setColumns(20);
@@ -507,17 +507,17 @@ public class MainUI extends javax.swing.JFrame {
         supportQueueCartoon.setBorder(null);
         jScrollPane8.setViewportView(supportQueueCartoon);
 
-        cartoonNetworkPanel.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 260, 80));
+        cartoonNetworkPanel.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 260, 50));
 
         winsCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         winsCartoon_label.setForeground(new java.awt.Color(51, 51, 51));
         winsCartoon_label.setText("Wins:");
-        cartoonNetworkPanel.add(winsCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 70, 30));
+        cartoonNetworkPanel.add(winsCartoon_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 70, 30));
 
         winsCounterCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         winsCounterCartoon.setForeground(new java.awt.Color(51, 51, 51));
         winsCounterCartoon.setText("0");
-        cartoonNetworkPanel.add(winsCounterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 70, 30));
+        cartoonNetworkPanel.add(winsCounterCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 70, 30));
 
         round.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         round.setForeground(new java.awt.Color(51, 51, 51));
@@ -525,7 +525,7 @@ public class MainUI extends javax.swing.JFrame {
 
         battleType.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         battleType.setForeground(new java.awt.Color(51, 51, 51));
-        cartoonNetworkPanel.add(battleType, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 190, 30));
+        cartoonNetworkPanel.add(battleType, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 190, 30));
 
         speed.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         speed.setModel(new javax.swing.SpinnerNumberModel(4, 1, 20, 1));
