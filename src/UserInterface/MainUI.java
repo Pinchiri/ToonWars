@@ -525,7 +525,7 @@ public class MainUI extends javax.swing.JFrame {
         cartoonNetworkPanel.add(battleType, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 190, 30));
 
         speed.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        speed.setModel(new javax.swing.SpinnerNumberModel(1, 1, 20, 1));
+        speed.setModel(new javax.swing.SpinnerNumberModel(4, 1, 20, 1));
         speed.setToolTipText("");
         speed.setBorder(null);
         speed.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

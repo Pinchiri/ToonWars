@@ -4,7 +4,6 @@
  */
 package Classes;
 
-import static Classes.Main.NUMBER_ID;
 import DataStructures.LinkedList;
 import DataStructures.Queue;
 import UserInterface.MainUI;
@@ -120,22 +119,7 @@ public class AnimationStudio {
         }
     }
 
-    public String generateCharacterStringID(int studioInt) {
-        String characterID;
-        switch (studioInt) {
-            case 0:
-                characterID = "A" + Integer.toString(NUMBER_ID);
-                NUMBER_ID++;
-                return characterID;
-
-            case 1:
-                characterID = "U" + Integer.toString(NUMBER_ID);
-                NUMBER_ID++;
-                return characterID;
-            default:
-                return null;
-        }
-    }
+    
 
     public void addCharacter(Character character) {
         // TODO - Refactor to Add random character to the Studio
