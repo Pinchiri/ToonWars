@@ -5,6 +5,7 @@
 package Classes;
 
 import static Constants.Constants.NEW_CHARACTER_CHANCE;
+import static Constants.Constants.OUT_OF_SUPPORT_CHANCE;
 import static Constants.Constants.ZERO_STATS;
 
 import java.util.Random;
@@ -26,57 +27,78 @@ public class Administrator extends Thread {
     private Semaphore readyAI;
     private ArtificialIntelligence AI;
     private MainUI userInterface;
+    private int processingSpeedInMS;
+    private int outOfSupportChance;
 
     public Administrator(Semaphore synchronization, Semaphore readyAI, ArtificialIntelligence AI,
-            AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
+            int processingSpeedInMS, AnimationStudio nickelodeon, AnimationStudio cartoonNetwork,
             MainUI userInterface) {
         this.nickelodeon = nickelodeon;
         this.cartoonNetwork = cartoonNetwork;
-        this.cyclesCounter = 0;
+        this.cyclesCounter = 1;
         this.newCharacterChance = NEW_CHARACTER_CHANCE;
+        this.outOfSupportChance = OUT_OF_SUPPORT_CHANCE;
         this.synchronization = synchronization;
         this.AI = AI;
         this.userInterface = userInterface;
         this.readyAI = readyAI;
+        this.processingSpeedInMS = processingSpeedInMS;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                getUserInterface().changeAIStatus("Waiting");
-                sleep(100);
+                this.updateProcesingSpeedFromSpinner();
+
+                this.resetInterface();
+                sleep(500);
 
                 updateUIValues();
+
+                this.getUserInterface().changeRound(this.cyclesCounter);
                 chooseFighters();
+                updateUIValues();
 
                 if (getAI().getBattleOcurring() == null) {
                     System.out.println("No hay peleadores disponibles");
-                    sleep(2000);
+                    sleep(this.getProcessingSpeedInMS());
                     continue;
                 }
 
-                if (cyclesCounter == 2) {
-                    setCyclesCounter(0);
-
-                    Random random = new Random();
-
-                    if (random.nextInt(1, 100) < newCharacterChance) {
-                        // TODO - Change when Add Character method is refactored
-
-                    }
-                }
-
-                cyclesCounter++;
+                getAI().setRound(cyclesCounter);
 
                 getSynchronization().release();
 
                 getReadyAI().acquire();
 
+                avoidStarvation();
+                updateUIValues();
+
+                handleBattleResults(getAI().getBattleOcurring());
+                updateUIValues();
+
+                Random random = new Random();
+                askForSupport(random);
+
+                this.evaluateIfNewCharacters(random);
+
+                cyclesCounter++;
+                updateUIValues();
+                printBothStudiosQueues();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void resetInterface() {
+        getUserInterface().changeAIStatus("Waiting");
+        getUserInterface().changeBattleType("");
+        getUserInterface().changeResult("");
+        this.getUserInterface().clearNickWinner();
+        this.getUserInterface().clearCartoonWinner();
     }
 
     public void chooseFighters() {
@@ -93,13 +115,31 @@ public class Administrator extends Thread {
             updateCharactersUI(firstFighter, secondFighter);
             getAI().setBattleOcurring(null);
         }
+        getAI(); // ???
 
+    }
+
+    public void avoidStarvation() {
+        getNickelodeon().increaseStarvationCounters();
+        getCartoonNetwork().increaseStarvationCounters();
+    }
+
+    public void evaluateIfNewCharacters(Random random) {
+        if ((cyclesCounter % 2 == 0) && (random.nextInt(1, 100) < newCharacterChance)) {
+            createNewCharacters();
+            updateUIValues();
+        }
     }
 
     public void updateUIValues() {
         getNickelodeon().updateQueuesUI();
         getCartoonNetwork().updateQueuesUI();
 
+    }
+
+    public void printBothStudiosQueues() {
+        getNickelodeon().printQueues();
+        getCartoonNetwork().printQueues();
     }
 
     public void updateCharactersUI(Character firstFighter, Character secondFighter) {
@@ -133,6 +173,84 @@ public class Administrator extends Thread {
             default ->
                 null;
         };
+    }
+
+    public void handleBattleResults(Battle battleOcurring) {
+        int result = battleOcurring.getResult();
+        switch (result) {
+            case 0 ->
+                handleWin(battleOcurring);
+            case 1 ->
+                handleDraw(battleOcurring);
+            case 2 ->
+                handleNoCombat(battleOcurring);
+
+        }
+
+    }
+
+    public void createNewCharacters() {
+        this.getNickelodeon().createRandomCharacter();
+        this.getCartoonNetwork().createRandomCharacter();
+    }
+
+    public void handleWin(Battle battleOcurring) {
+        // Add winner to winner list should be done by this method
+    }
+
+    public void handleDraw(Battle battleOcurring) {
+
+        Character nickFighter = battleOcurring.getFirstFighter();
+        Character cartoonFighter = battleOcurring.getSecondFighter();
+        if (nickFighter != null && cartoonFighter != null) {
+
+            nickFighter.setPriorityLevel(1);
+            this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
+
+            cartoonFighter.setPriorityLevel(1);
+            this.getCartoonNetwork().getTopPriorityQueue().add(cartoonFighter);
+
+        }
+    }
+
+    public void handleNoCombat(Battle battleOcurring) {
+        Character nickFighter = battleOcurring.getFirstFighter();
+        Character cartoonFighter = battleOcurring.getSecondFighter();
+        if (nickFighter != null && cartoonFighter != null) {
+            this.getNickelodeon().getSupportQueue().add(nickFighter);
+
+            this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
+        }
+    }
+
+    public void askForSupport(Random random) {
+        int randomInt = random.nextInt(1, 100);
+        Character nickFighter = this.getNickelodeon().getSupportQueue().dispatch();
+        Character cartoonFighter = this.getCartoonNetwork().getSupportQueue().dispatch();
+
+        if (nickFighter == null || cartoonFighter == null) {
+            return;
+        }
+        if (randomInt <= this.getOutOfSupportChance()) {
+            nickFighter.setPriorityLevel(1);
+            this.getNickelodeon().getTopPriorityQueue().add(nickFighter);
+            cartoonFighter.setPriorityLevel(1);
+            this.getCartoonNetwork().getTopPriorityQueue().add(cartoonFighter);
+            System.out.println("\nOut of Nicks support Queue--->" + nickFighter.getID());
+            System.out.println("\nOut of Cartoons support Queue--->" + cartoonFighter.getID());
+            System.out.println("");
+        } else {
+            this.getNickelodeon().getSupportQueue().add(nickFighter);
+            this.getCartoonNetwork().getSupportQueue().add(cartoonFighter);
+            System.out.println("\nBack to Nicks support Queue--->" + nickFighter.getID());
+            System.out.println("\nBack to Cartoons support Queue--->" + cartoonFighter.getID());
+            System.out.println("");
+        }
+    }
+
+    public void updateProcesingSpeedFromSpinner() {
+        int newSpeed = (int) this.getUserInterface().getUISpeedSpinner().getValue() * 1000;
+        this.setProcessingSpeedInMS(newSpeed);
     }
 
     // Getters and Setters
@@ -186,5 +304,33 @@ public class Administrator extends Thread {
 
     public Semaphore getReadyAI() {
         return readyAI;
+    }
+
+    /**
+     * @return the workingSpeed
+     */
+    public int getProcessingSpeedInMS() {
+        return processingSpeedInMS;
+    }
+
+    /**
+     * @param processingSpeedInMS the workingSpeed to set
+     */
+    public void setProcessingSpeedInMS(int processingSpeedInMS) {
+        this.processingSpeedInMS = processingSpeedInMS;
+    }
+
+    /**
+     * @return the outOfSupportChance
+     */
+    public int getOutOfSupportChance() {
+        return outOfSupportChance;
+    }
+
+    /**
+     * @param outOfSupportChance the outOfSupportChance to set
+     */
+    public void setOutOfSupportChance(int outOfSupportChance) {
+        this.outOfSupportChance = outOfSupportChance;
     }
 }

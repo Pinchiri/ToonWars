@@ -90,7 +90,7 @@ public class Constants {
                         "Mr. Maellard",
                         "Gary",
                         "Techmo",
-                        "Garrett Bobby Ferguson Jr.",
+                        "GarrettBobbyFergusonJr.",
                         "Garrett Bobby Ferguson",
                         "Starla",
                         "Margaret",

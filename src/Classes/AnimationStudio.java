@@ -55,17 +55,23 @@ public class AnimationStudio {
     }
 
     public void increaseStarvationCounters() {
+        String charactersMovedToTopQueue = "New To Top: ";
+        String charactersMovedToSecondQueue = "New To Second: ";
         for (int i = 0; i < getSecondPriorityQueue().getSize(); i++) {
-            modifyCharacterPriority(i, 2);
+            charactersMovedToTopQueue+= modifyCharacterPriority(i, 2);
 
         }
         for (int i = 0; i < getThirdPriorityQueue().getSize(); i++) {
-            modifyCharacterPriority(i, 3);
+            charactersMovedToSecondQueue += modifyCharacterPriority(i, 3);
 
         }
+        System.out.println("\n[ "+this.studioName+" ]");
+        System.out.println(charactersMovedToTopQueue);
+        System.out.println(charactersMovedToSecondQueue);
+        System.out.println("");
     }
 
-    public void modifyCharacterPriority(int index, int queuePriorityLevel) {
+    public String modifyCharacterPriority(int index, int queuePriorityLevel) {
         Queue<Character> queue = getQueueByPriorityLevel(queuePriorityLevel);
         Character character = queue.getElement(index);
 
@@ -79,9 +85,11 @@ public class AnimationStudio {
 
             character.setStarvationCounter(0);
             updateQueuesUI();
+            return character.getName()+" -> ";
 
         }
         character.increaseStarvationCounter();
+        return "";
 
     }
 
@@ -140,7 +148,7 @@ public class AnimationStudio {
         }
     }
 
-    public void createInitialCharacters() {
+    private void createInitialCharacters() {
         switch (this.getStudioInt()) {
             case 0 ->
                 this.characters = this.characterCreator.createInitialNickCharacters();
@@ -150,10 +158,19 @@ public class AnimationStudio {
         this.characterCounter = 20;
         for (int i = 0; i < this.characters.getSize(); i++) {
             Character character = this.characters.getElement(i);
-            System.out.println(character.toString());
             this.addCharacter(character);
         }
-
+        this.printQueues();
+    }
+    
+    public void printQueues(){
+        System.out.println("\n--------------------------------------------------------------------------");
+        System.out.println("[ "+this.studioName+" ]");
+        System.out.println("Top Queue: "+this.getTopPriorityQueue().printQueue());
+        System.out.println("Second Queue: "+this.getSecondPriorityQueue().printQueue());
+        System.out.println("Third Queue: "+this.getThirdPriorityQueue().printQueue());
+        System.out.println("Support Queue: "+this.getSupportQueue().printQueue());
+        System.out.println("--------------------------------------------------------------------------\n\n");
     }
 
     public void createRandomCharacter() {
@@ -166,6 +183,8 @@ public class AnimationStudio {
         }
 
         this.addCharacter(randomCharacter);
+        String newCharacterString = "\n***New " + this.getStudioName()+" Character***\n" + randomCharacter.toString();
+        System.out.println(newCharacterString);
 
     }
 

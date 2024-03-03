@@ -33,6 +33,7 @@ public class ArtificialIntelligence extends Thread {
     private int processingSpeedInMS;
     private AnimationStudio nickelodeon;
     private AnimationStudio cartoonNetwork;
+    private int round = 1;
 
     public ArtificialIntelligence(Semaphore synchronization, Semaphore readyAI, int processingSpeedInMS,
             AnimationStudio nickelodeon, AnimationStudio cartoonNetwork, MainUI userInterface) {
@@ -56,14 +57,16 @@ public class ArtificialIntelligence extends Thread {
         while (true) {
             try {
                 getSynchronization().acquire();
+                this.updateProcesingSpeedFromSpinner();
 
-                getUserInterface().changeAIStatus("Picking Winner");
+                getUserInterface().changeAIStatus("Processing...");
+                getUserInterface().changeBattleType(this.getBattleOcurring().getBattleType().getTypeString());
+                sleep(getProcessingSpeedInMS() / 2);
+
                 chooseWinner();
-
-                getNickelodeon().increaseStarvationCounters();
-                getCartoonNetwork().increaseStarvationCounters();
-
-                sleep(getProcessingSpeedInMS());
+                getUserInterface().changeAIStatus("Done!");
+                updateUIValues(); // UI Updates should be done by Admin
+                sleep(getProcessingSpeedInMS() / 2);
 
                 getReadyAI().release();
 
@@ -80,30 +83,37 @@ public class ArtificialIntelligence extends Thread {
             int randomResult = random.nextInt(1, 100);
 
             if (randomResult <= getDrawRate()) {
-                System.out.println("Empate");
                 getBattleOcurring().setResult(1);
+                handleDraw();
             } else if (randomResult > getDrawRate() && randomResult <= getDrawRate() + getNonCombatRate()) {
-                System.out.println("No hubo combate");
                 getBattleOcurring().setResult(2);
+                handleNoCombat();
             } else if (randomResult > getDrawRate() + getNonCombatRate()
                     && randomResult <= getDrawRate() + getNonCombatRate() + getWinRate()) {
                 determineWinner(random);
             }
+            System.out.println("-------" + "Round-" + getRound() + "-------");
+            System.out.println(getBattleOcurring().toString() + "\n");
+            this.getUserInterface().changeResult(getBattleOcurring().getResultString());
+
         }
     }
 
     public void determineWinner(Random random) {
         if (getFirstFighter() != null && getSecondFighter() != null) {
-            int pickWinner = random.nextInt(1, 3);
-            if (pickWinner == 1) {
+
+            int pickedWinner = this.pickWinner(random);
+            if (pickedWinner == 1) {
                 getWinners().addLast(getFirstFighter());
 
                 getNickelodeon().setWinsQty(getNickelodeon().getWinsQty() + 1);
                 getUserInterface().changeWinsCounterByStudio(getNickelodeon().getStudioInt(),
                         getNickelodeon().getWinsQty());
 
+                this.getUserInterface().setNickWinner();
                 getBattleOcurring().setResult(0);
                 getBattleOcurring().setWinner(getFirstFighter());
+
             } else {
                 getWinners().addLast(getSecondFighter());
 
@@ -111,10 +121,59 @@ public class ArtificialIntelligence extends Thread {
                 getUserInterface().changeWinsCounterByStudio(getCartoonNetwork().getStudioInt(),
                         getCartoonNetwork().getWinsQty());
 
+                this.getUserInterface().setCartoonWinner();
                 getBattleOcurring().setResult(0);
                 getBattleOcurring().setWinner(getSecondFighter());
             }
         }
+    }
+
+    public int pickWinner(Random random) {
+        float[] typeBattleArray = this.getBattleOcurring().getBattleType().getWeights();
+
+        float[] nickFighterStats = this.getFirstFighter().statsToArray();
+        float nickFighterOverall = 0;
+
+        float[] cartoonFighterStats = this.getSecondFighter().statsToArray();
+        float cartoonFighterOverall = 0;
+
+        for (int i = 0; i < typeBattleArray.length; i++) {
+            nickFighterOverall += typeBattleArray[i] + nickFighterStats[i];
+            cartoonFighterOverall += typeBattleArray[i] + cartoonFighterStats[i];
+        }
+
+        int winner;
+        if (nickFighterOverall > cartoonFighterOverall) {
+            winner = 1;
+        } else if (nickFighterOverall < cartoonFighterOverall) {
+            winner = 2;
+        } else {
+            winner = random.nextInt(1, 3);
+        }
+        return winner;
+    }
+
+    public void handleDraw() {
+        if (getFirstFighter() != null && getSecondFighter() != null) {
+            getBattleOcurring().setResult(1);
+        }
+    }
+
+    public void handleNoCombat() {
+        if (getFirstFighter() != null && getSecondFighter() != null) {
+            getBattleOcurring().setResult(2);
+        }
+    }
+
+    public void updateUIValues() {
+        getNickelodeon().updateQueuesUI();
+        getCartoonNetwork().updateQueuesUI();
+
+    }
+
+    public void updateProcesingSpeedFromSpinner() {
+        int newSpeed = (int) this.getUserInterface().getUISpeedSpinner().getValue() * 1000;
+        this.setProcessingSpeedInMS(newSpeed);
     }
 
     // Getters and Setters
@@ -200,5 +259,19 @@ public class ArtificialIntelligence extends Thread {
 
     public AnimationStudio getCartoonNetwork() {
         return cartoonNetwork;
+    }
+
+    /**
+     * @return the round
+     */
+    public int getRound() {
+        return round;
+    }
+
+    /**
+     * @param round the round to set
+     */
+    public void setRound(int round) {
+        this.round = round;
     }
 }
