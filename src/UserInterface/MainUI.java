@@ -292,6 +292,7 @@ public class MainUI extends javax.swing.JFrame {
         characterImgCartoon = new javax.swing.JLabel();
         chracterAGCartoon = new javax.swing.JLabel();
         chracterMGCartoon_Label = new javax.swing.JLabel();
+        cartoonWinner = new javax.swing.JLabel();
         secondQueueCartoon_label = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         secondQueueCartoon = new javax.swing.JTextArea();
@@ -311,7 +312,6 @@ public class MainUI extends javax.swing.JFrame {
         speed = new javax.swing.JSpinner();
         speed_Label = new javax.swing.JLabel();
         result = new javax.swing.JLabel();
-        cartoonWinner = new javax.swing.JLabel();
         nickelodeonPanel = new javax.swing.JPanel();
         secondQueueNick_label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -330,6 +330,7 @@ public class MainUI extends javax.swing.JFrame {
         chracterMGNick_Label = new javax.swing.JLabel();
         chracterMPNick_Label = new javax.swing.JLabel();
         chracterMPNick = new javax.swing.JLabel();
+        nickWinner = new javax.swing.JLabel();
         nickelodeonPanel_title = new javax.swing.JLabel();
         topQueueNick_label = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -349,7 +350,6 @@ public class MainUI extends javax.swing.JFrame {
         battleType_label = new javax.swing.JLabel();
         statusAI = new javax.swing.JLabel();
         AI_label = new javax.swing.JLabel();
-        nickWinner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -379,79 +379,83 @@ public class MainUI extends javax.swing.JFrame {
         chracterSPCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSPCartoon.setForeground(new java.awt.Color(190, 190, 0));
         chracterSPCartoon.setText("0");
-        jPanel2.add(chracterSPCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 54, -1));
+        jPanel2.add(chracterSPCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 54, -1));
 
         chracterAGCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterAGCartoon_Label.setForeground(new java.awt.Color(255, 153, 0));
         chracterAGCartoon_Label.setText("AG:");
-        jPanel2.add(chracterAGCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 29, -1));
+        jPanel2.add(chracterAGCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 29, -1));
 
         chracterMPCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMPCartoon_Label.setForeground(new java.awt.Color(51, 153, 255));
         chracterMPCartoon_Label.setText("MP:");
-        jPanel2.add(chracterMPCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
+        jPanel2.add(chracterMPCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
 
         characterIDCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         characterIDCartoon.setForeground(java.awt.Color.white);
         characterIDCartoon.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel2.add(characterIDCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 143, 20));
+        jPanel2.add(characterIDCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 143, 20));
 
         chracterMPCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMPCartoon.setForeground(new java.awt.Color(51, 153, 255));
         chracterMPCartoon.setText("0");
-        jPanel2.add(chracterMPCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 54, -1));
+        jPanel2.add(chracterMPCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 54, -1));
 
         characterIDCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         characterIDCartoon_Label.setForeground(java.awt.Color.white);
         characterIDCartoon_Label.setText("ID:");
-        jPanel2.add(characterIDCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 41, -1));
+        jPanel2.add(characterIDCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 41, -1));
 
         chracterSPCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSPCartoon_Label.setForeground(new java.awt.Color(190, 190, 0));
         chracterSPCartoon_Label.setText("SP:");
-        jPanel2.add(chracterSPCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 29, -1));
+        jPanel2.add(chracterSPCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 29, -1));
 
         chracterHPCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterHPCartoon.setForeground(new java.awt.Color(153, 204, 0));
         chracterHPCartoon.setText("0");
-        jPanel2.add(chracterHPCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 54, 20));
+        jPanel2.add(chracterHPCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 54, 20));
 
         chracterHPCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterHPCartoon_Label.setForeground(new java.awt.Color(153, 204, 0));
         chracterHPCartoon_Label.setText("HP:");
-        jPanel2.add(chracterHPCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 29, 20));
+        jPanel2.add(chracterHPCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 29, 20));
 
         chracterMGCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMGCartoon.setForeground(new java.awt.Color(204, 102, 255));
         chracterMGCartoon.setText("0");
-        jPanel2.add(chracterMGCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 54, 20));
+        jPanel2.add(chracterMGCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 54, 20));
 
         chracterSTCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSTCartoon.setForeground(new java.awt.Color(255, 51, 51));
         chracterSTCartoon.setText("0");
-        jPanel2.add(chracterSTCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 54, 20));
+        jPanel2.add(chracterSTCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 54, 20));
 
         chracterSTCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSTCartoon_Label.setForeground(new java.awt.Color(255, 51, 51));
         chracterSTCartoon_Label.setText("ST:");
-        jPanel2.add(chracterSTCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 29, -1));
+        jPanel2.add(chracterSTCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 29, -1));
 
         characterImgCartoon.setForeground(java.awt.Color.white);
         characterImgCartoon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/CartoonImages/logo-un-show-mas.png"))); // NOI18N
         characterImgCartoon.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPanel2.add(characterImgCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 200, 220));
+        jPanel2.add(characterImgCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 220));
 
         chracterAGCartoon.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterAGCartoon.setForeground(new java.awt.Color(255, 153, 0));
         chracterAGCartoon.setText("0");
-        jPanel2.add(chracterAGCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 54, 20));
+        jPanel2.add(chracterAGCartoon, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 54, 20));
 
         chracterMGCartoon_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMGCartoon_Label.setForeground(new java.awt.Color(204, 102, 255));
         chracterMGCartoon_Label.setText("MG:");
-        jPanel2.add(chracterMGCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 35, 20));
+        jPanel2.add(chracterMGCartoon_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 35, 20));
 
-        cartoonNetworkPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 360));
+        cartoonWinner.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        cartoonWinner.setForeground(new java.awt.Color(102, 204, 0));
+        jPanel2.add(cartoonWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 100, 30));
+
+        cartoonNetworkPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 230, 400));
 
         secondQueueCartoon_label.setBackground(new java.awt.Color(0, 0, 0));
         secondQueueCartoon_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
@@ -533,22 +537,18 @@ public class MainUI extends javax.swing.JFrame {
         speed.setBorder(null);
         speed.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         speed.setName(""); // NOI18N
-        cartoonNetworkPanel.add(speed, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 50, 30));
+        cartoonNetworkPanel.add(speed, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 50, 30));
 
         speed_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         speed_Label.setForeground(new java.awt.Color(51, 51, 51));
         speed_Label.setText("Speed(s):");
-        cartoonNetworkPanel.add(speed_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 130, 30));
+        cartoonNetworkPanel.add(speed_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 130, 30));
 
         result.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         result.setForeground(new java.awt.Color(51, 51, 51));
         cartoonNetworkPanel.add(result, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 150, 30));
 
-        cartoonWinner.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        cartoonWinner.setForeground(new java.awt.Color(102, 204, 0));
-        cartoonNetworkPanel.add(cartoonWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 100, 30));
-
-        generalPanel.add(cartoonNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 590, 640));
+        generalPanel.add(cartoonNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 590, 670));
 
         nickelodeonPanel.setBackground(new java.awt.Color(255, 153, 0));
         nickelodeonPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -565,78 +565,82 @@ public class MainUI extends javax.swing.JFrame {
         characterIDNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         characterIDNick_Label.setForeground(new java.awt.Color(255, 153, 0));
         characterIDNick_Label.setText("ID:");
-        jPanel1.add(characterIDNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 41, -1));
+        jPanel1.add(characterIDNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 41, -1));
 
         characterIDNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         characterIDNick.setForeground(new java.awt.Color(255, 153, 0));
         characterIDNick.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
-        jPanel1.add(characterIDNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 6, 143, 23));
+        jPanel1.add(characterIDNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 143, 23));
 
         characterImgNick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/NickImages/logo-de-avatar-la-leyenda-de-aang-avatar.png"))); // NOI18N
         characterImgNick.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
-        jPanel1.add(characterImgNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 47, 200, 220));
+        jPanel1.add(characterImgNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 220));
 
         chracterHPNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterHPNick_Label.setForeground(new java.awt.Color(153, 204, 0));
         chracterHPNick_Label.setText("HP:");
-        jPanel1.add(chracterHPNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 273, 29, -1));
+        jPanel1.add(chracterHPNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 29, -1));
 
         chracterHPNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterHPNick.setForeground(new java.awt.Color(153, 204, 0));
         chracterHPNick.setText("0");
-        jPanel1.add(chracterHPNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 273, 54, 20));
+        jPanel1.add(chracterHPNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 54, 20));
 
         chracterAGNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterAGNick.setForeground(new java.awt.Color(255, 153, 0));
         chracterAGNick.setText("0");
-        jPanel1.add(chracterAGNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 302, 54, 20));
+        jPanel1.add(chracterAGNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 54, 20));
 
         chracterAGNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterAGNick_Label.setForeground(new java.awt.Color(255, 153, 0));
         chracterAGNick_Label.setText("AG:");
-        jPanel1.add(chracterAGNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 302, 29, -1));
+        jPanel1.add(chracterAGNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 29, -1));
 
         chracterSTNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSTNick.setForeground(new java.awt.Color(255, 51, 51));
         chracterSTNick.setText("0");
-        jPanel1.add(chracterSTNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 273, 54, -1));
+        jPanel1.add(chracterSTNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 54, -1));
 
         chracterSTNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSTNick_Label.setForeground(new java.awt.Color(255, 51, 51));
         chracterSTNick_Label.setText("ST:");
-        jPanel1.add(chracterSTNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 273, 29, -1));
+        jPanel1.add(chracterSTNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 29, -1));
 
         chracterSPNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSPNick.setForeground(new java.awt.Color(190, 190, 0));
         chracterSPNick.setText("0");
-        jPanel1.add(chracterSPNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 302, 54, -1));
+        jPanel1.add(chracterSPNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 54, -1));
 
         chracterSPNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterSPNick_Label.setForeground(new java.awt.Color(190, 190, 0));
         chracterSPNick_Label.setText("SP:");
-        jPanel1.add(chracterSPNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 302, 29, -1));
+        jPanel1.add(chracterSPNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 29, -1));
 
         chracterMGNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMGNick.setForeground(new java.awt.Color(204, 102, 255));
         chracterMGNick.setText("0");
-        jPanel1.add(chracterMGNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 331, 54, -1));
+        jPanel1.add(chracterMGNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 54, -1));
 
         chracterMGNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMGNick_Label.setForeground(new java.awt.Color(204, 102, 255));
         chracterMGNick_Label.setText("MG:");
-        jPanel1.add(chracterMGNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 331, 35, -1));
+        jPanel1.add(chracterMGNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 35, -1));
 
         chracterMPNick_Label.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMPNick_Label.setForeground(new java.awt.Color(51, 153, 255));
         chracterMPNick_Label.setText("MP:");
-        jPanel1.add(chracterMPNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 331, 29, -1));
+        jPanel1.add(chracterMPNick_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 29, -1));
 
         chracterMPNick.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         chracterMPNick.setForeground(new java.awt.Color(51, 153, 255));
         chracterMPNick.setText("0");
-        jPanel1.add(chracterMPNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 331, 54, 20));
+        jPanel1.add(chracterMPNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 54, 20));
 
-        nickelodeonPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 230, 360));
+        nickWinner.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        nickWinner.setForeground(new java.awt.Color(102, 204, 0));
+        jPanel1.add(nickWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 130, 30));
+
+        nickelodeonPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 230, 400));
 
         nickelodeonPanel_title.setBackground(new java.awt.Color(0, 0, 0));
         nickelodeonPanel_title.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
@@ -722,20 +726,16 @@ public class MainUI extends javax.swing.JFrame {
         statusAI.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         statusAI.setForeground(new java.awt.Color(51, 51, 51));
         statusAI.setText("Waiting");
-        nickelodeonPanel.add(statusAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 190, 30));
+        nickelodeonPanel.add(statusAI, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 190, 30));
 
         AI_label.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         AI_label.setForeground(new java.awt.Color(51, 51, 51));
         AI_label.setText("AI:");
-        nickelodeonPanel.add(AI_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 40, 30));
+        nickelodeonPanel.add(AI_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 40, 30));
 
-        nickWinner.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        nickWinner.setForeground(new java.awt.Color(102, 204, 0));
-        nickelodeonPanel.add(nickWinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 130, 30));
+        generalPanel.add(nickelodeonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 670));
 
-        generalPanel.add(nickelodeonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 640));
-
-        getContentPane().add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 640));
+        getContentPane().add(generalPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
