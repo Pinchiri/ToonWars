@@ -52,7 +52,7 @@ public class Administrator extends Thread {
                 this.updateProcesingSpeedFromSpinner();
 
                 this.resetInterface();
-                sleep(500);
+                sleep(100);
 
                 updateUIValues();
 

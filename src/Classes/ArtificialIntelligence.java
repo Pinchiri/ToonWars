@@ -61,12 +61,13 @@ public class ArtificialIntelligence extends Thread {
 
                 getUserInterface().changeAIStatus("Processing...");
                 getUserInterface().changeBattleType(this.getBattleOcurring().getBattleType().getTypeString());
-                sleep(getProcessingSpeedInMS() / 2);
+                sleep(getProcessingSpeedInMS());
 
                 chooseWinner();
+                sleep(200);
+
                 getUserInterface().changeAIStatus("Done!");
                 updateUIValues(); // UI Updates should be done by Admin
-                sleep(getProcessingSpeedInMS() / 2);
 
                 getReadyAI().release();
 
