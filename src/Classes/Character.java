@@ -22,7 +22,7 @@ public class Character {
         this.name = name;
         this.priorityLevel = priorityLevel;
         this.stats = stats;
-        this.starvationCounter = 0;
+        this.starvationCounter = 1;
         this.image = image;
     }
 
@@ -52,7 +52,7 @@ public class Character {
         float magic = (float) this.getStats().getMagic();
         float manaPoints = (float) this.getStats().getManaPoints();
 
-        float[] statsArray = {HP, strength, agility, speed, magic, manaPoints};
+        float[] statsArray = { HP, strength, agility, speed, magic, manaPoints };
         return statsArray;
     }
 

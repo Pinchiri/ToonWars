@@ -64,9 +64,10 @@ public class ArtificialIntelligence extends Thread {
                 sleep(getProcessingSpeedInMS());
 
                 chooseWinner();
-                sleep(200);
 
                 getUserInterface().changeAIStatus("Done!");
+                sleep(200);
+
                 updateUIValues(); // UI Updates should be done by Admin
 
                 getReadyAI().release();

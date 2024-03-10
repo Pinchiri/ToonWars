@@ -57,14 +57,14 @@ public class AnimationStudio {
         String charactersMovedToTopQueue = "New To Top: ";
         String charactersMovedToSecondQueue = "New To Second: ";
         for (int i = 0; i < getSecondPriorityQueue().getSize(); i++) {
-            charactersMovedToTopQueue+= modifyCharacterPriority(i, 2);
+            charactersMovedToTopQueue += modifyCharacterPriority(i, 2);
 
         }
         for (int i = 0; i < getThirdPriorityQueue().getSize(); i++) {
             charactersMovedToSecondQueue += modifyCharacterPriority(i, 3);
 
         }
-        System.out.println("\n[ "+this.studioName+" ]");
+        System.out.println("\n[ " + this.studioName + " ]");
         System.out.println(charactersMovedToTopQueue);
         System.out.println(charactersMovedToSecondQueue);
         System.out.println("");
@@ -83,8 +83,7 @@ public class AnimationStudio {
             newQueue.add(character);
 
             character.setStarvationCounter(0);
-            updateQueuesUI();
-            return character.getName()+" -> ";
+            return character.getName() + " -> ";
 
         }
         character.increaseStarvationCounter();
@@ -119,8 +118,6 @@ public class AnimationStudio {
         }
     }
 
-    
-
     public void addCharacter(Character character) {
         // TODO - Refactor to Add random character to the Studio
         if (character.isTopPriority()) {
@@ -146,14 +143,14 @@ public class AnimationStudio {
         }
         this.printQueues();
     }
-    
-    public void printQueues(){
+
+    public void printQueues() {
         System.out.println("\n--------------------------------------------------------------------------");
-        System.out.println("[ "+this.studioName+" ]");
-        System.out.println("Top Queue: "+this.getTopPriorityQueue().printQueue());
-        System.out.println("Second Queue: "+this.getSecondPriorityQueue().printQueue());
-        System.out.println("Third Queue: "+this.getThirdPriorityQueue().printQueue());
-        System.out.println("Support Queue: "+this.getSupportQueue().printQueue());
+        System.out.println("[ " + this.studioName + " ]");
+        System.out.println("Top Queue: " + this.getTopPriorityQueue().printQueue());
+        System.out.println("Second Queue: " + this.getSecondPriorityQueue().printQueue());
+        System.out.println("Third Queue: " + this.getThirdPriorityQueue().printQueue());
+        System.out.println("Support Queue: " + this.getSupportQueue().printQueue());
         System.out.println("--------------------------------------------------------------------------\n\n");
     }
 
@@ -167,7 +164,7 @@ public class AnimationStudio {
         }
 
         this.addCharacter(randomCharacter);
-        String newCharacterString = "\n***New " + this.getStudioName()+" Character***\n" + randomCharacter.toString();
+        String newCharacterString = "\n***New " + this.getStudioName() + " Character***\n" + randomCharacter.toString();
         System.out.println(newCharacterString);
 
     }
